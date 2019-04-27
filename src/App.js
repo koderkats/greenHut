@@ -5,7 +5,8 @@
 
 import React from 'react'
 import { hot } from 'react-hot-loader'
-import ViewBoxApp from './pocs/ViewBoxApp/ViewBoxApp'
+import Viewport from './comp/Viewport/Viewport'
+import WorkspacePage from './pages/WorkspacePage/WorkspacePage'
 import s from './App.css'
 
 type Props = {
@@ -18,7 +19,12 @@ let i = 0;
 const App = (props: Props) => (
   <div comp={compName + ' a'} alias={props.alias} className={s.comp} id="a">
     {window.addEventListener('resize', function(){ location.reload(true); })}
-    <ViewBoxApp />
+
+    {/* <Viewport alias="viewport" w={720} h={480} vw={window.innerWidth} vh={window.innerHeight} s={{alignContent:"left"}}> */}
+    <Viewport alias="viewport" w={window.innerWidth} h={window.innerHeight} vw={window.innerWidth} vh={window.innerHeight} s={{alignContent:"left"}}>
+      <WorkspacePage />
+    </Viewport>
+
   </div>
 )
 
