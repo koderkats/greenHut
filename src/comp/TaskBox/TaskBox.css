@@ -1,0 +1,14 @@
+.comp {
+  display:inline-block;
+  position:relative;
+  vertical-align:top;
+  width:100%;
+  height:auto;
+  max-height:100%;
+  min-height:100%;
+  background-color:white;
+  color:black;
+  border:1px solid #bbb;
+  overflow-x:hidden;
+  overflow-y:scroll;
+}
