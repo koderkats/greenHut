@@ -1,6 +1,7 @@
 ################ Webpack
 dist/
 distDev/
+webfonts/
 
 ################ Diff
 *.patch
