@@ -1,23 +1,24 @@
 // @flow
 
-import React from 'react'
-import s from './TaskBoxAdder.css'
+import * as React from 'react'
+import s from './ViewBox.css'
 import u from '../../lib/util/util';
 
 type Props = {
+  children?: React.Node,
 }
 
-const compName = 'TaskBoxAdder'
+const compName = 'ViewBox'
 
-const TaskBoxAdder = (props: Props) => {
+const ViewBox = (props: Props) => {
   return (
     <div comp={compName} alias={props.alias} className={s.comp} style={u.mergeComponentStyles(props, style)}>
-      <div>+</div>
+      {props.children}
     </div>
   )
 }
 
-export default TaskBoxAdder
+export default ViewBox
 
 const style = (props: Props) => ({
 });

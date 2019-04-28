@@ -1,23 +1,23 @@
-// @flow
+// X@flow
 
 import * as React from 'react'
-import s from './D.css'
+import s from './S.css'
 import u from '../../lib/util/util';
 
 type Props = {
-  alias: string,
   children?: React.Node,
+  alias: ?String,
 }
 
-const compName = 'D'
+const compName = 'S'
 
-const D = (props: Props) => (
+const S = (props: Props) => (
   <div comp={compName} alias={props.alias} className={s.comp} style={u.mergeComponentStyles(props, style)}>
     {props.children}
   </div>
 )
 
-export default D
+export default S
 
 const style = (props: Props) => ({
 });
