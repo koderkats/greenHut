@@ -17,6 +17,7 @@ module.exports = {
   output: {
     // publicPath: './',  // Required for: yarn build:dev
     publicPath: '/',      // Required for: yarn start
+
     path: folder.dist,
     filename: '[name].bundle.js',
   },
@@ -59,7 +60,7 @@ module.exports = {
 
       {
         test: /\.css$/,
-        use: [
+        use: [                                                                       
           {
             loader: require.resolve('postcss-loader'),
             options: {
@@ -80,7 +81,31 @@ module.exports = {
           }
 
         ],
-      }
+      },
+
+
+      // {
+      //   test: /\.(woff|woff2|eot|ttf|otf)$/,
+      //   use: [
+      //     'file-loader'
+      //   ]
+      // }
+
+      // {
+      //   test: /\.(jpe|jpg|woff|woff2|eot|ttf|svg)(\?.*$|$)/,
+      //   loader: 'file-loader',
+      //   options: {
+      //     name: './[name].[ext]',
+      //     // outputPath: './assets',
+      //     publicPath: '/webfonts/fontAwesome5',
+      //   }
+      // }
+
+      // {
+      //   test: /\.(eot|svg|ttf|woff|woff2)$/,
+      //   loader: 'file-loader?name=/fonts/[name].[ext]'
+      // }
+
     ],
   },
 
