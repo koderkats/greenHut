@@ -13,7 +13,7 @@ type Props = {
 const compName = 'AppHeader'
 
 function AppHeader(props: Props) {
-  // useEffect: executes after component rendered
+  // useEffect: executes after every render, if props/state changes
   useEffect(() => {
     console.log('useEffect running');
     (function randomItemColors() {
@@ -25,8 +25,7 @@ function AppHeader(props: Props) {
         item.style.background = `rgb(${r},${g},${b})`
       }
     })();
-
-  });
+  }, []); // []: dependecy vars, if dendency vars change then run useEffect again
   return (
     <div data-app-header comp={compName} alias={props.alias} className={s.comp} style={u.mergeComponentStyles(props, style)}>
 
