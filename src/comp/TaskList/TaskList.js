@@ -1,8 +1,8 @@
 // @flow
 
 import React, { useState } from 'react'
-import s from './TaskList.css'
-import u from '../../lib/util/util';
+import Task from '../Task/Task'
+import Divider from '../Divider/Divider'
 
 type Props = {
   alias: string,
@@ -15,9 +15,12 @@ function TaskList(props: Props) {
   const [taskList, setTaskList] = useState({});
 
   let tasks = [
-    <div data-section>1</div>,
-    <div data-section>2</div>,
-    <div data-section>3</div>
+    <Divider/>,
+    <Task pid="0" alias="ann" email="ann@a.com" />,
+    <Divider/>,
+    <Task pid="1" alias="bob" email="bob@b.com" />,
+    <Divider/>,
+    <Task pid="2" alias="cat" email="cat@c.com" />,
   ]
 
   return (
