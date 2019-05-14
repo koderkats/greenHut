@@ -7,6 +7,6 @@
 	background:red;
 }
 
-[data-tasklist] { display:block; height:100%; }
+[data-task] { display:block; height:100%; }
 [data-section] { display:block; }
 [data-button] { margin:5px; }
