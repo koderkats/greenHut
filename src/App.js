@@ -22,6 +22,7 @@ const compName = 'App'
 
 const App = (props: Props) => {
   //document.body.classList.add('u-panes');
+  
   return (
     <div data-app-container>
       <AppHeader/>

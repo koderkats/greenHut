@@ -1,9 +1,11 @@
 // @flow
 
 import * as React from 'react'
+import {useState} from 'react'
 import {useEffect} from 'react'
 import s from './AppHeader.css'
-import u from '../../lib/util/util';
+import u from '../../lib/util/util'
+import api from '../../lib/api/api'
 
 type Props = {
   alias: string,
@@ -13,6 +15,9 @@ type Props = {
 const compName = 'AppHeader'
 
 function AppHeader(props: Props) {
+
+  const [user, setUser] = useState({id:-1, alias:'ALIAS', email:'EMAIL'});
+
 
   // useEffect: executes after every render, if props/state changes
   useEffect(() => {
@@ -26,6 +31,11 @@ function AppHeader(props: Props) {
         item.style.background = `rgb(${r},${g},${b})`
       }
     })();
+
+    api.getUser(1).then((user)=>{
+      setUser(user);
+    });
+
   }, []); // []: dependecy vars, if dendency vars change then run useEffect again
 
   return (
@@ -40,9 +50,9 @@ function AppHeader(props: Props) {
       </div>
 
       <div data-item="1" data-right>1</div>
-      <div data-item="2" data-right>2</div>
-      <div data-item="3" data-right>3</div>
-      <div data-item="4" data-right>4</div>
+      <div data-item="2" data-right>{user.email}</div>
+      <div data-item="3" data-right>{user.alias}</div>
+      <div data-item="4" data-right>{user.id}</div>
 
     </div>
   );
