@@ -6,6 +6,7 @@ import { hot } from 'react-hot-loader'
 import WorkspacePage from './pages/WorkspacePage/WorkspacePage'
 import AppHeader from './comp/AppHeader/AppHeader'
 import Counter from './comp/Counter/Counter'
+import TaskList from './comp/TaskList/TaskList'
 import s from './App.css'
 
 type Props = {
@@ -27,6 +28,7 @@ const App = (props: Props) => {
     <div data-app-container>
       <AppHeader/>
       <Divider/>
+      <TaskList/>
       <Divider/>
       <Counter/>
       <Divider/>
