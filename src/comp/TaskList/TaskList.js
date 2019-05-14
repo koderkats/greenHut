@@ -16,11 +16,11 @@ function TaskList(props: Props) {
 
   let tasks = [
     <Divider/>,
-    <Task pid="0" alias="ann" email="ann@a.com" />,
+    <Task pid="0" done={false} details="task 0" />,
     <Divider/>,
-    <Task pid="1" alias="bob" email="bob@b.com" />,
+    <Task pid="1" done={false} details="task 1" />,
     <Divider/>,
-    <Task pid="2" alias="cat" email="cat@c.com" />,
+    <Task pid="2" done={false} details="task 2" />,
   ]
 
   return (

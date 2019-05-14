@@ -14,9 +14,9 @@ type Props = {
 function Task(props: Props) {
   return (
     <div data-task>
-      <div data-section data-id>{props.pid}</div>
-      <div data-section data-alias>{props.alias}</div>
-      <div data-section data-email>{props.email}</div>
+      <div data-section data-pid>{props.pid}</div>
+      <div data-section data-done>{props.done ? 'true' : 'false'}</div>
+      <div data-section data-details>{props.details}</div>
     </div>
   );
 }
