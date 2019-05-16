@@ -21,7 +21,7 @@ function AppHeader(props: Props) {
 
   // useEffect: executes after every render, if props/state changes
   useEffect(() => {
-    console.log('useEffect running');
+    console.log('AppHeader useEffect running');
     (function randomItemColors() {
       const items = document.querySelectorAll('[data-item]');
       for(let item of items){
