@@ -1,8 +1,7 @@
 // @flow
 
-import React, {useContext} from 'react'
+import React, {useContext, useState, useEffect} from 'react'
 import { hot } from 'react-hot-loader'
-import {  StoreProvider, /*StoreContext*/ } from './context/StoreContext'
 
 import { which, func, log, dir } from './lib/global/global'
 import WorkspacePage from './pages/WorkspacePage/WorkspacePage'
@@ -11,8 +10,10 @@ import Counter from './comp/Counter/Counter'
 import TaskList from './comp/TaskList/TaskList'
 import s from './App.css'
 
+export const GlobalContext = React.createContext({});
+
 const thisFile = 'App.js'
-// const { state, dispatch, actions } = useContext(StoreContext);
+
 
 type Props = {
   alias?: String,
@@ -30,8 +31,12 @@ const App = (props: Props) => {
   const thisFunc = 'App'
   func(thisFile, thisFunc, props);
 
-  //document.body.classList.add('u-panes');
+  const [state, setState] = useState({page:'', count:0});
 
+  //document.body.classList.add('u-panes');
+  useEffect(()=>{
+    setState({page:'home', count:12});
+  },[]);
 
   which(2, {
     1: () => log(thisFile, thisFunc, 'ONE'),
@@ -55,23 +60,19 @@ const App = (props: Props) => {
   }, curState);
   console.log('NEWSTATE:', newState);
   return (
-    <div data-app-container>
-      <AppHeader/>
-      <Divider/>
-      <TaskList/>
-      <Divider/>
-      <Counter/>
-      <Divider/>
-    </div>
+    <GlobalContext.Provider value={[state, setState]}>
+      <div data-app-container>
+        <AppHeader/>
+        <Divider/>
+        <TaskList/>
+        <Divider/>
+        <Counter/>
+        <Divider/>
+        <div style={{display:'block'}}>APP PAGE: {state.page}</div>
+        <div style={{display:'block'}}>APP COUNT: {state.count}</div>
+      </div>
+    </GlobalContext.Provider>
   )
 }
 
-function StateApp() {
-  return (
-    <StoreProvider>
-      <App/>
-    </StoreProvider>
-  )
-}
-
-export default hot(module)(StateApp)
+export default hot(module)(App)
