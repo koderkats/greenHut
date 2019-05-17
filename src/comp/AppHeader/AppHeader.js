@@ -1,10 +1,12 @@
 // @flow
 
 import React, {useState, useEffect} from 'react'
+import { which, func, log, dir } from '../../lib/global/global'
 import s from './AppHeader.css'
 import u from '../../lib/util/util'
 import api from '../../lib/api/api'
 
+const thisFile = 'AppHeader.js'
 
 
 
@@ -17,6 +19,8 @@ type Props = {
 const compName = 'AppHeader'
 
 function AppHeader(props: Props) {
+  const thisFunc = 'AppHeader'
+  func(thisFile, thisFunc, props);
 
   const [user, setUser] = useState({id:-1, alias:'ALIAS', email:'EMAIL'});
 
