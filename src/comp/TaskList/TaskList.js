@@ -7,7 +7,7 @@ import api from '../../lib/api/api'
 
 type Props = {
   alias: string,
-  children?: React.Node,
+  //children?: React.Node,``
 }
 
 const compName = 'TaskList'
