@@ -1,13 +1,13 @@
 // @flow
 
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useContext} from 'react'
 import { which, func, log, dir } from '../../lib/global/global'
 import s from './AppHeader.css'
 import u from '../../lib/util/util'
 import api from '../../lib/api/api'
+import {GlobalContext} from '../../App'
 
 const thisFile = 'AppHeader.js'
-
 
 
 
@@ -21,6 +21,9 @@ const compName = 'AppHeader'
 function AppHeader(props: Props) {
   const thisFunc = 'AppHeader'
   func(thisFile, thisFunc, props);
+
+  const [state, setState] = useContext(GlobalContext);
+  dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT:');
 
   const [user, setUser] = useState({id:-1, alias:'ALIAS', email:'EMAIL'});
 
@@ -40,6 +43,11 @@ function AppHeader(props: Props) {
 
     api.getUser(1).then((user)=>{
       setUser(user);
+      const newState = {page:'random', count:84}
+      if (state.page !== newState.page && state.count !== newState.count) {
+        setState(newState);
+      }
+  
     });
 
   }, []); // []: dependecy vars, if dendency vars change then run useEffect again
@@ -60,6 +68,8 @@ function AppHeader(props: Props) {
       <div data-item="3" data-right>{user.alias}</div>
       <div data-item="4" data-right>{user.id}</div>
 
+      <div style={{display:'block'}}>APPHEADER PAGE: {state.page}</div>
+      <div style={{display:'block'}}>APPHEADER COUNT: {state.count}</div>
     </div>
   );
 
