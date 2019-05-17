@@ -1,13 +1,17 @@
 // @flow
 
-import React from 'react'
+import React, {useContext} from 'react'
 import { hot } from 'react-hot-loader'
+import {  StoreProvider, /*StoreContext*/ } from './context/StoreContext'
+
 import { which } from './lib/global/global'
 import WorkspacePage from './pages/WorkspacePage/WorkspacePage'
 import AppHeader from './comp/AppHeader/AppHeader'
 import Counter from './comp/Counter/Counter'
 import TaskList from './comp/TaskList/TaskList'
 import s from './App.css'
+
+// const { state, dispatch, actions } = useContext(StoreContext);
 
 type Props = {
   alias?: String,
@@ -38,14 +42,13 @@ const App = (props: Props) => {
     console.log('VALUE NOT FOUND')
   });
 
-  const state = { count: 50 }
+  const curState = { count: 50 }
   const action = { type:'INCREMENT_COUNTER', value: 1 }
   const newState =  which(action.type, {
-    'INCREMENT_COUNTER': { ...state, ...{count: state.count + action.value} },
-    'DECREMENT_COUNTER': { ...state, ...{count: state.count + action.value} },
-  }, state);
+    'INCREMENT_COUNTER': { ...curState, ...{count: curState.count + action.value} },
+    'DECREMENT_COUNTER': { ...curState, ...{count: curState.count + action.value} },
+  }, curState);
   console.log('NEWSTATE:', newState);
-
   return (
     <div data-app-container>
       <AppHeader/>
@@ -57,4 +60,13 @@ const App = (props: Props) => {
     </div>
   )
 }
-export default hot(module)(App)
+
+function StateApp() {
+  return (
+    <StoreProvider>
+      <App/>
+    </StoreProvider>
+  )
+}
+
+export default hot(module)(StateApp)

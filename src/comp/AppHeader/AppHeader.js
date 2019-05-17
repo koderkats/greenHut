@@ -1,11 +1,13 @@
 // @flow
 
-import * as React from 'react'
-import {useState} from 'react'
-import {useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import s from './AppHeader.css'
 import u from '../../lib/util/util'
 import api from '../../lib/api/api'
+
+
+
+
 
 type Props = {
   alias: string,
