@@ -6,7 +6,7 @@ const logDir = true
 
 export default (function Global() {
 	let me = {}
-	me.shortTime = () => {
+	me.shortTime = function() {
 		return Math.floor(new Date()).toString().split('').slice(-5).join('');
 	}
 	me.func = function(file, func, msg) {

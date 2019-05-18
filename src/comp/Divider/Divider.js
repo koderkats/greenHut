@@ -13,7 +13,7 @@ function Divider(props: Props) {
   g.func(false, thisFile, thisFunc, props);
 
   return (
-    <hr/>
+    <hr comp={thisFunc}/>
   );
 }
 

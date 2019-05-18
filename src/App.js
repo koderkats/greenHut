@@ -23,8 +23,6 @@ function Divider() {
   )
 }
 
-const compName = 'App'
-
 const App = (props: Props) => {
   const thisFunc = 'App'
   g.func(thisFile, thisFunc, props);
@@ -61,7 +59,7 @@ const App = (props: Props) => {
 
   return (
     <GlobalContext.Provider value={[state, setState]}>
-      <div data-app-container>
+      <div comp={thisFunc} data-app-container>
         <AppHeader/>
         <Divider/>
         <TaskList/>

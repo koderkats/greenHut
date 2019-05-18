@@ -12,8 +12,6 @@ type Props = {
   children?: React.Node,
 }
 
-const compName = 'Counter'
-
 function Counter(props: Props) {
   const thisFunc = 'Counter'
   g.func(thisFile, thisFunc, props);
@@ -21,7 +19,7 @@ function Counter(props: Props) {
   const [count, setCount] = useState(0); // [state, stateSetter] = useState(initialState)
 
   return (
-    <div data-counter>
+    <div comp={thisFunc} data-counter>
       <div data-section>{`COUNT: ${count}`}</div>
       <div data-section>
         <button data-button onClick={()=>setCount(0)}>reset</button>

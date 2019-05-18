@@ -19,7 +19,7 @@ function Task(props: Props) {
   g.func(thisFile, thisFunc, props);
 
   return (
-    <div data-task>
+    <div comp={thisFunc} data-task>
       <div data-section data-pid>{props.pid}</div>
       <div data-section data-done>{props.done ? 'true' : 'false'}</div>
       <div data-section data-details>{props.details}</div>
