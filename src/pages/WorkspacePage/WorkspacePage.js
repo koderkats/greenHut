@@ -11,13 +11,11 @@ type Props = {
   alias?: String,
 }
 
-const compName = 'WorkspacePage'
-
 const WorspacePage = (props) => {
   const thisFunc = 'WorkspacePage'
   g.func(thisFile, thisFunc, props);
   return (
-    <div comp={compName} alias={props.alias} className={s.comp}></div>
+    <div comp={thisFunc} alias={props.alias} className={s.comp}></div>
   );
 }
 

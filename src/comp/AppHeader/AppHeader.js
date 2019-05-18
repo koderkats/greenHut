@@ -9,14 +9,10 @@ import {GlobalContext} from '../../App'
 
 const thisFile = 'AppHeader.js'
 
-
-
 type Props = {
   alias: string,
   children?: React.Node,
 }
-
-const compName = 'AppHeader'
 
 function AppHeader(props: Props) {
   const thisFunc = 'AppHeader'
@@ -54,7 +50,7 @@ function AppHeader(props: Props) {
   }, []); // []: dependecy vars, if dendency vars change then run useEffect again
 
   return (
-    <div data-app-header comp={compName} alias={props.alias} className={s.comp} style={u.mergeComponentStyles(props, style)}>
+    <div comp={thisFunc} data-app-header alias={props.alias} className={s.comp} style={u.mergeComponentStyles(props, style)}>
 
       <div data-segment>
         <div data-cont>

@@ -13,8 +13,6 @@ type Props = {
   //children?: React.Node,``
 }
 
-const compName = 'TaskList'
-
 function TaskList(props: Props) {
   const thisFunc = 'TaskList'
   g.func(thisFile, thisFunc, props);
@@ -37,7 +35,7 @@ function TaskList(props: Props) {
   });
 
   return (
-    <div data-tasklist>
+    <div comp={thisFunc} data-tasklist>
       <div data-section>TASKLIST</div>
       <Divider/>
       <div data-section>{taskListJsx}</div>

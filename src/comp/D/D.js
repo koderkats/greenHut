@@ -12,14 +12,12 @@ type Props = {
   children?: React.Node,
 }
 
-const compName = 'D'
-
-const D = (props: Props) => {
+function D(props: Props) {
   const thisFunc = 'D'
   g.func(thisFile, thisFunc, props);
 
   return (
-    <div comp={compName} alias={props.alias} className={s.comp} style={u.mergeComponentStyles(props, style)}>
+    <div comp={thisFunc} alias={props.alias} className={s.comp} style={u.mergeComponentStyles(props, style)}>
       {props.children}
     </div>
   );  
