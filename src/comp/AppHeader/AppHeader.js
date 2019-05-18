@@ -1,7 +1,7 @@
 // @flow
 
 import React, {useState, useEffect, useContext} from 'react'
-import { which, func, log, dir } from '../../lib/global/global'
+import g, { which } from '../../global'
 import s from './AppHeader.css'
 import u from '../../lib/util/util'
 import api from '../../lib/api/api'
@@ -20,17 +20,17 @@ const compName = 'AppHeader'
 
 function AppHeader(props: Props) {
   const thisFunc = 'AppHeader'
-  func(thisFile, thisFunc, props);
+  g.func(thisFile, thisFunc, props);
 
   const [state, setState] = useContext(GlobalContext);
-  dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT:');
+  g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
 
   const [user, setUser] = useState({id:-1, alias:'ALIAS', email:'EMAIL'});
 
 
   // useEffect: executes after every render, if props/state changes
   useEffect(() => {
-    console.log('AppHeader useEffect running');
+    g.func(thisFile, thisFunc + ':useEffect');
     (function randomItemColors() {
       const items = document.querySelectorAll('[data-item]');
       for(let item of items){
@@ -42,6 +42,7 @@ function AppHeader(props: Props) {
     })();
 
     api.getUser(1).then((user)=>{
+      g.func(thisFile, thisFunc + ':useEffect:api.getUser:resolved', user);
       setUser(user);
       const newState = {page:'random', count:84}
       if (state.page !== newState.page && state.count !== newState.count) {

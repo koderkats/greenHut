@@ -1,8 +1,11 @@
 // @flow
 
 import React, { useState } from 'react'
+import g, { which } from '../../global'
 import s from './Counter.css'
 import u from '../../lib/util/util';
+
+const thisFile = 'Counter.js'
 
 type Props = {
   alias: string,
@@ -12,6 +15,9 @@ type Props = {
 const compName = 'Counter'
 
 function Counter(props: Props) {
+  const thisFunc = 'Counter'
+  g.func(thisFile, thisFunc, props);
+
   const [count, setCount] = useState(0); // [state, stateSetter] = useState(initialState)
 
   return (

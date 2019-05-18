@@ -1,9 +1,12 @@
 // @flow
 
 import React, { useState, useEffect } from 'react'
+import g, { which } from '../../global'
 import Task from '../Task/Task'
 import Divider from '../Divider/Divider'
 import api from '../../lib/api/api'
+
+const thisFile = 'TaskList.js'
 
 type Props = {
   alias: string,
@@ -13,13 +16,17 @@ type Props = {
 const compName = 'TaskList'
 
 function TaskList(props: Props) {
+  const thisFunc = 'TaskList'
+  g.func(thisFile, thisFunc, props);
+
   // const [taskList, setTaskList] = useState([]);
   const [taskList, setTaskList] = useState([]);
 
   useEffect(()=>{
-    console.log('TaskList useEffect running');
+    g.func(thisFile, thisFunc + ':useEffect');
     api.getTaskList().then((taskList) => {
-        setTaskList(taskList);
+      g.func(thisFile, thisFunc + ':useEffect:api.getTaskList:resolved', taskList);
+      setTaskList(taskList);
     });
   },[]);
 

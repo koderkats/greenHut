@@ -1,8 +1,11 @@
 // @flow
 
 import React, { useState } from 'react'
+import g, { which } from '../../global'
 import s from './Task.css'
 import u from '../../lib/util/util';
+
+const thisFile = 'Task.js'
 
 type Props = {
   pid: number,
@@ -12,6 +15,9 @@ type Props = {
 }
 
 function Task(props: Props) {
+  const thisFunc = 'Task'
+  g.func(thisFile, thisFunc, props);
+
   return (
     <div data-task>
       <div data-section data-pid>{props.pid}</div>
@@ -20,5 +26,5 @@ function Task(props: Props) {
     </div>
   );
 }
-
+ 
 export default Task
