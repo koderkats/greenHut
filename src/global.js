@@ -48,6 +48,11 @@ export default (function Global() {
 		if (position === 'first') return s.charAt(0).toUpperCase() + s.substring(1);
 	}
 
+	me.cn = function(prefix) {
+		return function(classNames) {
+			return classNames.split(' ').map( function(item){return `${prefix}__${item}`;} ).join(' ');
+		}
+	}
     // (function randomItemColors() {
     //   const items = document.querySelectorAll('[data-item]');
     //   for(let item of items){

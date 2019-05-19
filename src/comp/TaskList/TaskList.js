@@ -17,6 +17,7 @@ type Props = {
 function TaskList(props: Props) {
   const thisFunc = 'TaskList'
   g.func(thisFile, thisFunc, props);
+  const cn = g.cn(thisFunc);
 
   // const [taskList, setTaskList] = useState([]);
   const [taskList, setTaskList] = useState([]);
@@ -36,10 +37,10 @@ function TaskList(props: Props) {
   });
 
   return (
-    <div comp={thisFunc} data-tasklist>
-      <div data-section>TASKLIST</div>
+    <div comp={thisFunc} className={cn(`tasklist`)}>
+      <div className={cn(`section`)}>TASKLIST</div>
       <Divider/>
-      <div data-section>{taskListJsx}</div>
+      <div className={cn(`section`)}>{taskListJsx}</div>
       <Divider/>
     </div>
   );

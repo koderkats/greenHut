@@ -17,6 +17,7 @@ type Props = {
 function AppHeader(props: Props) {
   const thisFunc = 'AppHeader'
   g.func(thisFile, thisFunc, props);
+  const cn = g.cn(thisFunc);
 
   const [state, setState] = useContext(g.GlobalContext);
   g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
@@ -39,20 +40,20 @@ function AppHeader(props: Props) {
   }, []);
 
   return (
-    <div comp={thisFunc} data-app-header alias={props.alias} className={s.comp} style={u.mergeComponentStyles(props, style)}>
+    <div comp={thisFunc} className={cn('app-header')} alias={props.alias} style={u.mergeComponentStyles(props, style)}>
 
-      <div data-segment>
-        <div data-cont>
-          <div data-item="1">1</div>
-          <div data-item="2">2</div>
-          <div data-item="3">3</div>
+      <div className={cn(`segment`)}>
+        <div className={cn(`cont`)}>
+          <div className={cn(`item item-1`)}>1</div>
+          <div className={cn(`item item-2`)}>2</div>
+          <div className={cn(`item item-3`)}>3</div>
         </div>
       </div>
 
-      <div data-item="1" data-right>1</div>
-      <div data-item="2" data-right>{user.email}</div>
-      <div data-item="3" data-right>{g.toUpperCase(user.alias, 'first')}</div>
-      <div data-item="4" data-right>{user.id}</div>
+      <div className={cn(`item item-1 right`)}>1</div>
+      <div className={cn(`item item-2 right`)}>{user.email}</div>
+      <div className={cn(`item item-3 right`)}>{g.toUpperCase(user.alias, 'first')}</div>
+      <div className={cn(`item item-4 right`)}>{user.id}</div>
     </div>
   );
 

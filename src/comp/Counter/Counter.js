@@ -17,12 +17,12 @@ function Counter(props: Props) {
   const [count, setCount] = useState(0); // [state, stateSetter] = useState(initialState)
 
   return (
-    <div comp={thisFunc} data-counter>
-      <div data-section>{`COUNT: ${count}`}</div>
-      <div data-section>
-        <button data-button onClick={()=>setCount(0)}>reset</button>
-        <button data-button onClick={()=>setCount(count=>count-1)}>-</button>
-        <button data-button onClick={()=>setCount(count=>count+1)}>+</button>
+    <div comp={thisFunc} className={`counter`}>
+      <div className={`section`}>{`COUNT: ${count}`}</div>
+      <div className={`section`}>
+        <button className={`button`} onClick={()=>setCount(0)}>reset</button>
+        <button className={`button`} onClick={()=>setCount(count=>count-1)}>-</button>
+        <button className={`button`} onClick={()=>setCount(count=>count+1)}>+</button>
       </div>
     </div>
   );
