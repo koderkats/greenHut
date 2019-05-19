@@ -24,6 +24,9 @@
 	padding-left:10px; padding-right:10px;
 	margin-right:10px;
 	font-size:16px;
-	border-radius: 5px 5px 0 0; }
+	border-radius: 5px 5px 0 0; 
+}
+
+[data-tab][data-active="true"] { background-color:red; }
 
 [data-item][data-right] { min-width:50px; float:right; }

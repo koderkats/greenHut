@@ -10,6 +10,11 @@ export default (function Global() {
 	me.logLog = true
 	me.logDir = true
 
+	me.initialState = {
+		user: { id:4, alias:'user', email:'user@u.com' },
+		dashboardBridge: { activeTab:'myTasks' },
+		// dashboardBridge: { activeTab:'updates' },
+	}
 	me.GlobalContext = React.createContext({});
 
 	me.shortTime = function() {
@@ -38,6 +43,22 @@ export default (function Global() {
 			console.dir(obj);
 		}
 	}
+
+	me.toUpperCase = function(s, position) {
+		if (position === 'first') return s.charAt(0).toUpperCase() + s.substring(1);
+	}
+
+    // (function randomItemColors() {
+    //   const items = document.querySelectorAll('[data-item]');
+    //   for(let item of items){
+    //     var r = Math.floor(255 * Math.random());
+    //     var g = Math.floor(255 * Math.random());
+    //     var b = Math.floor(255 * Math.random());
+    //     item.style.background = `rgb(${r},${g},${b})`
+    //   }
+    // })();
+
+
 	me.which = which;
 	me.switch = which;
 	return me;

@@ -20,7 +20,7 @@ function App(props: Props) {
   const thisFunc = 'App'
   g.func(thisFile, thisFunc, props);
 
-  const [state, setState] = useState({page:'', count:0});
+  const [state, setState] = useState(g.initialState);
 
   //document.body.classList.add('u-panes');
   useEffect(()=>{
