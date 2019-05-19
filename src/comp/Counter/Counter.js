@@ -2,8 +2,6 @@
 
 import React, { useState } from 'react'
 import g, { which } from '../../global'
-import s from './Counter.css'
-import u from '../../lib/util/util';
 
 const thisFile = 'Counter.js'
 

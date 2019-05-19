@@ -1,16 +1,22 @@
-export const isDev = true
-export const isDebug = isDev
-const logFunc = true
-const logLog = true
-const logDir = true
+import React from 'react'
 
 export default (function Global() {
 	let me = {}
+
+	me.isDev = true
+	me.isProd = !me.isDev
+	me.isDebug = me.isDev
+	me.logFunc = true
+	me.logLog = true
+	me.logDir = true
+
+	me.GlobalContext = React.createContext({});
+
 	me.shortTime = function() {
 		return Math.floor(new Date()).toString().split('').slice(-5).join('');
 	}
 	me.func = function(file, func, msg) {
-		if (isDebug && logFunc && arguments[0]!=false){
+		if (me.isDebug && me.logFunc && arguments[0]!=false){
 			const {color, weight} = {color:'blue', weight: 'bold'}
 			console.group(`${func}`);
 			console.groupEnd();
@@ -19,14 +25,14 @@ export default (function Global() {
 	}
 	
 	me.log = function(file, func, msg) {
-		if (isDebug && logLog, arguments[0]!=false){
+		if (me.isDebug && me.logLog, arguments[0]!=false){
 			const {color, weight} = {color:'green', weight: 'none'}
 			console.log(`%c        ${me.shortTime()} [LOG ] ${file} ${func} `, `color: ${color}; font-weight: ${weight};`, msg ? msg : '');
 		}
 	}
 	
 	me.dir = function(file, func, obj, msg) {
-		if (isDebug && logDir, arguments[0]!=false){
+		if (me.isDebug && me.logDir, arguments[0]!=false){
 			const {color, weight} = {color:'purple', weight: 'bold'}
 			console.log(`%c        ${me.shortTime()} [DIR ] ${file} ${func} %c ${msg ? msg : ''}`, `color: ${color}; font-weight: ${weight};`, `color:fuchsia; font-weight:none`);
 			console.dir(obj);
