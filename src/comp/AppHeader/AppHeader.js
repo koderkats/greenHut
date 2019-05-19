@@ -2,10 +2,10 @@
 
 import React, {useState, useEffect, useContext} from 'react'
 import g, { which } from '../../global'
-import s from './AppHeader.css'
+import Divider from '../../comp/Divider/Divider'
 import u from '../../lib/util/util'
 import api from '../../lib/api/api'
-import {GlobalContext} from '../../App'
+import s from './AppHeader.css'
 
 const thisFile = 'AppHeader.js'
 
@@ -18,7 +18,7 @@ function AppHeader(props: Props) {
   const thisFunc = 'AppHeader'
   g.func(thisFile, thisFunc, props);
 
-  const [state, setState] = useContext(GlobalContext);
+  const [state, setState] = useContext(g.GlobalContext);
   g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
 
   const [user, setUser] = useState({id:-1, alias:'ALIAS', email:'EMAIL'});
@@ -47,7 +47,7 @@ function AppHeader(props: Props) {
   
     });
 
-  }, []); // []: dependecy vars, if dendency vars change then run useEffect again
+  }, []);
 
   return (
     <div comp={thisFunc} data-app-header alias={props.alias} className={s.comp} style={u.mergeComponentStyles(props, style)}>
@@ -64,9 +64,6 @@ function AppHeader(props: Props) {
       <div data-item="2" data-right>{user.email}</div>
       <div data-item="3" data-right>{user.alias}</div>
       <div data-item="4" data-right>{user.id}</div>
-
-      <div style={{display:'block'}}>APPHEADER PAGE: {state.page}</div>
-      <div style={{display:'block'}}>APPHEADER COUNT: {state.count}</div>
     </div>
   );
 

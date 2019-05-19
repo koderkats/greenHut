@@ -2,7 +2,6 @@
 
 import React from 'react'
 import g, { which } from '../../global'
-// import D from '../../comp/D/D'
 import s from './WorkspacePage.css'
 
 const thisFile = 'WorkspacePage.js'
