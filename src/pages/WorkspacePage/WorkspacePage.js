@@ -13,8 +13,10 @@ type Props = {
 const WorspacePage = (props) => {
   const thisFunc = 'WorkspacePage'
   g.func(thisFile, thisFunc, props);
+  const cn = g.cn(thisFunc);
+
   return (
-    <div comp={thisFunc} alias={props.alias} className={s.comp}></div>
+    <div comp={thisFunc} className={cn(``)} alias={props.alias}></div>
   );
 }
 

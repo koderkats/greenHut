@@ -16,12 +16,13 @@ type Props = {
 function Task(props: Props) {
   const thisFunc = 'Task'
   g.func(thisFile, thisFunc, props);
+  const cn = g.cn(thisFunc);
 
   return (
-    <div comp={thisFunc} data-task>
-      <div data-section data-pid>{props.pid}</div>
-      <div data-section data-done>{props.done ? 'true' : 'false'}</div>
-      <div data-section data-details>{props.details}</div>
+    <div comp={thisFunc} className={cn(`task`)}>
+      <div className={cn(`section pid`)}>{props.pid}</div>
+      <div className={cn(`section done`)}>{props.done ? 'true' : 'false'}</div>
+      <div className={cn(`section details`)}>{props.details}</div>
     </div>
   );
 }

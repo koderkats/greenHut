@@ -17,6 +17,7 @@ type Props = {
 function DashboardBridge(props: Props) {
   const thisFunc = 'DashboardBridge'
   g.func(thisFile, thisFunc, props);
+  const cn = g.cn(thisFunc);
 
   const [state, setState] = useContext(g.GlobalContext);
   g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
@@ -40,24 +41,24 @@ function DashboardBridge(props: Props) {
   }, []);
 
   return (
-    <div comp={thisFunc} data-app-header alias={props.alias} className={s.comp} style={u.mergeComponentStyles(props, style)}>
+    <div comp={thisFunc} className={cn(`dashboardbridge`)} alias={props.alias} className={s.comp} style={u.mergeComponentStyles(props, style)}>
 
-      <div data-segment>
-        <div data-cont>
-          <div data-item="1">
-            <div data-greeting>{`Good afternoon, ${g.toUpperCase(user.alias, 'first')}.`}</div>
-            <div data-status>{`You have ${0} tasks, ${0} are due today.`}</div>
+      <div className={cn(`segment`)}>
+        <div className={cn(`cont`)}>
+          <div className={cn(`item item-1`)}>
+            <div className={cn(`greeting`)}>{`Good afternoon, ${g.toUpperCase(user.alias, 'first')}.`}</div>
+            <div className={cn(`status`)}>{`You have ${0} tasks, ${0} are due today.`}</div>
           </div>
         </div>
 
-        <div data-cont data-tabs>
-          <div data-item="1" data-tab="myTasks" data-active={dashboardBridge.activeTab === 'myTasks'}>MY TASKS</div>
-          <div data-item="2" data-tab="updates" data-active={dashboardBridge.activeTab === 'updates'}>UPDATES</div>
+        <div className={cn(`cont tabs`)}>
+          <div className={cn(`item item-1`)} tab="myTasks" data-active={dashboardBridge.activeTab === 'myTasks'}>MY TASKS</div>
+          <div className={cn(`item item-2`)} tab="updates" data-active={dashboardBridge.activeTab === 'updates'}>UPDATES</div>
         </div>
 
       </div>
 
-      <div data-item="1" data-right>1</div>
+      <div className={cn(`item item-1 right`)}>1</div>
     </div>
   );
 

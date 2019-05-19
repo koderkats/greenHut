@@ -19,6 +19,7 @@ type Props = {
 function App(props: Props) {
   const thisFunc = 'App'
   g.func(thisFile, thisFunc, props);
+  const cn = g.cn(thisFunc);
 
   const [state, setState] = useState(g.initialState);
 
@@ -29,17 +30,12 @@ function App(props: Props) {
 
   return (
     <g.GlobalContext.Provider value={[state, setState]}>
-      <div comp={thisFunc} data-app-container>
+      <div comp={thisFunc} className={cn(`app-container`)}>
         <AppHeader/>
         <Divider/>
         <DashboardBridge/>
         <Divider/>
         <TaskList/>
-        <Divider/>
-        <Counter/>
-        <Divider/>
-        <div style={{display:'block'}}>APP PAGE: {state.page}</div>
-        <div style={{display:'block'}}>APP COUNT: {state.count}</div>
       </div>
     </g.GlobalContext.Provider>
   )

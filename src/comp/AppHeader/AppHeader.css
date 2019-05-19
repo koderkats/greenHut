@@ -1,16 +1,16 @@
 .comp {
 }
 
-[data-app-header] { width:100%; }
+.app-header { width:100%; }
 
-[comp="AppHeader"] [data-segment] { padding-left:30px; }
+.segment { padding-left:30px; }
 
-[data-cont] { display:flex; flex-direction:row; flex-grow:1; flex-shrink:1; flex-basis:auto; height:auto; max-width:100%; width:auto; background:gray; }
+.cont { display:flex; flex-direction:row; flex-grow:1; flex-shrink:1; flex-basis:auto; height:auto; max-width:100%; width:auto; background:gray; }
 
-[data-item] { height:40px; color:red; text-shadow: 1px 1px black; font-size:10px; display:flex; justify-content:center; align-items:center; font-size:34px; padding-left:15px; padding-right:15px; }
+.item { height:40px; color:red; text-shadow: 1px 1px black; font-size:10px; display:flex; justify-content:center; align-items:center; font-size:34px; padding-left:15px; padding-right:15px; }
 
-[data-item="1"] { min-width:50px; }
-[data-item="2"] { min-width:100px; }
-[data-item="3"] { min-width:200px; }
+.item-1 { min-width:50px; }
+.item-2 { min-width:100px; }
+.item-3 { min-width:200px; }
 
-[data-item][data-right] { min-width:50px; float:right; }
+.right { min-width:50px; float:right; }
