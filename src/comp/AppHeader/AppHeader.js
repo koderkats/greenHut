@@ -21,21 +21,10 @@ function AppHeader(props: Props) {
   const [state, setState] = useContext(g.GlobalContext);
   g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
 
-  const [user, setUser] = useState({id:-1, alias:'ALIAS', email:'EMAIL'});
+  const [user, setUser] = useState(g.initialState.user);
 
-
-  // useEffect: executes after every render, if props/state changes
   useEffect(() => {
     g.func(thisFile, thisFunc + ':useEffect');
-    (function randomItemColors() {
-      const items = document.querySelectorAll('[data-item]');
-      for(let item of items){
-        var r = Math.floor(255 * Math.random());
-        var g = Math.floor(255 * Math.random());
-        var b = Math.floor(255 * Math.random());
-        item.style.background = `rgb(${r},${g},${b})`
-      }
-    })();
 
     api.getUser(1).then((user)=>{
       g.func(thisFile, thisFunc + ':useEffect:api.getUser:resolved', user);
@@ -62,7 +51,7 @@ function AppHeader(props: Props) {
 
       <div data-item="1" data-right>1</div>
       <div data-item="2" data-right>{user.email}</div>
-      <div data-item="3" data-right>{user.alias}</div>
+      <div data-item="3" data-right>{g.toUpperCase(user.alias, 'first')}</div>
       <div data-item="4" data-right>{user.id}</div>
     </div>
   );
