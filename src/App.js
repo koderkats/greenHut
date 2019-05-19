@@ -5,6 +5,7 @@ import { hot } from 'react-hot-loader'
 import g, { which } from './global'
 import Divider from './comp/Divider/Divider'
 import AppHeader from './comp/AppHeader/AppHeader'
+import DashboardBridge from './comp/DashboardBridge/DashboardBridge'
 import Counter from './comp/Counter/Counter'
 import TaskList from './comp/TaskList/TaskList'
 import s from './App.css'
@@ -30,6 +31,8 @@ function App(props: Props) {
     <g.GlobalContext.Provider value={[state, setState]}>
       <div comp={thisFunc} data-app-container>
         <AppHeader/>
+        <Divider/>
+        <DashboardBridge/>
         <Divider/>
         <TaskList/>
         <Divider/>
