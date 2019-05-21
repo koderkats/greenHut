@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import g, { which } from '../../global'
+
 import s from './Task.css'
 
 const thisFile = 'Task.js'
@@ -18,13 +19,15 @@ function Task(props: Props) {
   g.func(thisFile, thisFunc, props);
   const cn = g.cn(thisFunc);
 
-  return (
-    <div comp={thisFunc} className={cn(`task`)}>
+  return (<>
+    <div comp={thisFunc} className={cn(`task`)} style={g.style(props, style, thisFunc)}>
       <div className={cn(`section pid`)}>{props.pid}</div>
       <div className={cn(`section done`)}>{props.done ? 'true' : 'false'}</div>
       <div className={cn(`section details`)}>{props.details}</div>
     </div>
-  );
+  </>);
 }
  
 export default Task
+
+const style = (props: Props) => ({});

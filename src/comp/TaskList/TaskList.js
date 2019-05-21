@@ -2,10 +2,11 @@
 
 import React, { useState, useEffect } from 'react'
 import g, { which } from '../../global'
+import s from './TaskList.css'
+
+import api from '../../lib/api/api'
 import Task from '../Task/Task'
 import Divider from '../Divider/Divider'
-import api from '../../lib/api/api'
-import s from './TaskList.css'
 
 const thisFile = 'TaskList.js'
 
@@ -24,6 +25,7 @@ function TaskList(props: Props) {
 
   useEffect(()=>{
     g.func(thisFile, thisFunc + ':useEffect');
+
     api.getTaskList().then((taskList) => {
       g.func(thisFile, thisFunc + ':useEffect:api.getTaskList:resolved', taskList);
       setTaskList(taskList);
@@ -36,17 +38,16 @@ function TaskList(props: Props) {
     )
   });
 
-  return (
-    <div comp={thisFunc} className={cn(`tasklist`)}>
+  return (<>
+    <div comp={thisFunc} className={cn(`tasklist`)} style={g.style(props, style, thisFunc)}>
       <div className={cn(`section`)}>TASKLIST</div>
       <Divider/>
       <div className={cn(`section`)}>{taskListJsx}</div>
       <Divider/>
     </div>
-  );
+  </>);
 }
 
 export default TaskList
 
-const style = (props: Props) => ({
-});
+const style = (props: Props) => ({});
