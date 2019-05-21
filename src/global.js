@@ -11,8 +11,9 @@ export default (function Global() {
 	me.logDir = true
 
 	me.initialState = {
+		page: {activePage:'default', activeTab:'default'},
 		user: { id:4, alias:'user', email:'user@u.com' },
-		dashboardBridge: { activeTab:'myTasks' },
+		dashboardBridge: { activeTab:'default' },
 		// dashboardBridge: { activeTab:'updates' },
 	}
 	me.GlobalContext = React.createContext({});
@@ -20,6 +21,7 @@ export default (function Global() {
 	me.shortTime = function() {
 		return Math.floor(new Date()).toString().split('').slice(-5).join('');
 	}
+
 	me.func = function(file, func, msg) {
 		if (me.isDebug && me.logFunc && arguments[0]!=false){
 			const {color, weight} = {color:'blue', weight: 'bold'}
@@ -50,10 +52,19 @@ export default (function Global() {
 
 	me.cn = function(prefix) {
 		return function(classNames) {
-			return classNames.split(' ').map( function(item){return `${prefix}__${item}`;} ).join(' ');
+			return classNames.split(' ').map( function(item){return `${prefix} ${item} ${prefix}__${item}`;} ).join(' ');
 		}
 	}
-    // (function randomItemColors() {
+
+	me.style = function(props, styleFunc, thisFunc) {
+		return {...styleFunc(props), ...props.s};
+	}
+
+	me.themeStyle = function(state) {
+		return JSON.stringify(state);
+	}
+
+		// (function randomItemColors() {
     //   const items = document.querySelectorAll('[data-item]');
     //   for(let item of items){
     //     var r = Math.floor(255 * Math.random());

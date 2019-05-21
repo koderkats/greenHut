@@ -7,10 +7,9 @@ const Util = function() {
   g.func(false, thisFile, thisFunc, arguments);
 
 	let me = {}
-	me.mergeComponentStyles = function(props, styleFunc) {
-		g.func(false, thisFile, thisFunc + ':mergeComponentsStyles', arguments);
-
-		return {...styleFunc(props), ...props.s};
+	me.hello = function(props) {
+		g.func(false, thisFile, thisFunc + ':hello', arguments);
+		console.log('world');
 	}
 	return me;
 }

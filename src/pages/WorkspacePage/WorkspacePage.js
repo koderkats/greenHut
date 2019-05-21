@@ -15,9 +15,11 @@ const WorspacePage = (props) => {
   g.func(thisFile, thisFunc, props);
   const cn = g.cn(thisFunc);
 
-  return (
-    <div comp={thisFunc} className={cn(``)} alias={props.alias}></div>
-  );
+  return (<>
+    <div comp={thisFunc} className={cn(``)} alias={props.alias} style={g.style(props, style, thisFunc)}></div>
+  </>);
 }
 
 export default WorspacePage
+
+const style = (props: Props) => ({});

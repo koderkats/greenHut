@@ -16,8 +16,8 @@ function Counter(props: Props) {
 
   const [count, setCount] = useState(0); // [state, stateSetter] = useState(initialState)
 
-  return (
-    <div comp={thisFunc} className={`counter`}>
+  return (<>
+    <div comp={thisFunc} className={`counter`} style={g.style(props, style, thisFunc)}>
       <div className={`section`}>{`COUNT: ${count}`}</div>
       <div className={`section`}>
         <button className={`button`} onClick={()=>setCount(0)}>reset</button>
@@ -25,10 +25,9 @@ function Counter(props: Props) {
         <button className={`button`} onClick={()=>setCount(count=>count+1)}>+</button>
       </div>
     </div>
-  );
+  </>);
 }
 
 export default Counter
 
-const style = (props: Props) => ({
-});
+const style = (props: Props) => ({});
