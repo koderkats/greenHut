@@ -39,16 +39,15 @@ function DashboardBridge(props: Props) {
 
       <div className={cn(`segment`)}>
         <div className={cn(`cont-greeting`)}>
-            <div className={cn(`item item-1`)}>
-            <div className={cn(`greeting`)}>{`Good afternoon, ${g.toUpperCase(state.user.alias, 'first')}.`}</div>
-            <div className={cn(`status`)}>{`You have ${0} tasks, ${0} are due today.`}</div>
-          </div>
+            <div className={cn(`greeting`)}><span>|&nbsp;&nbsp;|</span> Workspace</div>
         </div>
 
         <div className={cn(`cont tabs`)}>
           <div className={cn(`cont cont-left tabs`)}>
-            <div className={cn(`tab item item-1`)} tab="myTasks" data-active={state.dashboardBridge.activeTab === 'myTasks'}>MY TASKS</div>
-            <div className={cn(`tab item item-2`)} tab="updates" data-active={state.dashboardBridge.activeTab === 'updates'}>UPDATES</div>
+          <div className={cn(`tab item`)} tab="tasks" data-active={state.dashboardBridge.activeTab === 'myTasks'}>Tasks</div>
+            <div className={cn(`tab item`)} tab="convos" data-active={state.dashboardBridge.activeTab === 'updates'}>Convos</div>
+            <div className={cn(`tab item`)} tab="notes" data-active={state.dashboardBridge.activeTab === 'myTasks'}>Notes</div>
+            <div className={cn(`tab item`)} tab="files" data-active={state.dashboardBridge.activeTab === 'updates'}>Files</div>
           </div>
 
           <div className={cn(`cont-right`)}>
@@ -103,6 +102,7 @@ export function DashboardBridgeStyle(state, thisFunc) {
 
   .greeting {
     font-size:20px;
+    color:#ad9178;
   }
   .status {
     font-size:16px;
@@ -110,7 +110,6 @@ export function DashboardBridgeStyle(state, thisFunc) {
   .item {
     height:40px;
     color:black;
-    text-shadow: 1px 1px black;
     font-size:10px;
     display:flex;
     justify-content:center;
@@ -130,7 +129,7 @@ export function DashboardBridgeStyle(state, thisFunc) {
     margin-right:10px;
     font-size:16px;
     border-radius: 5px 5px 0 0; 
-    background-color:#f2f5f6;
+    background-color:#f2f6f6;
     border: solid #ccc;
     border-width: 1px 1px 0px 1px
   }

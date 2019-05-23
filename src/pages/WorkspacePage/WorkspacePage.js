@@ -10,16 +10,22 @@ type Props = {
   alias?: String,
 }
 
-const WorspacePage = (props) => {
+const WorkspacePage = (props) => {
   const thisFunc = 'WorkspacePage'
   g.func(thisFile, thisFunc, props);
   const cn = g.cn(thisFunc);
 
   return (<>
+    <style dangerouslySetInnerHTML={{__html: g.styler(WorkspacePageStyle, null, thisFunc)}} />
     <div comp={thisFunc} className={cn(``)} alias={props.alias} style={g.style(props, style, thisFunc)}></div>
   </>);
 }
 
-export default WorspacePage
+export default WorkspacePage
 
 const style = (props: Props) => ({});
+
+export function WorkspacePageStyle(state, thisFunc) {
+  return `
+  `
+}

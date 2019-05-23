@@ -3,8 +3,6 @@
 import React, { useState } from 'react'
 import g, { which } from '../../global'
 
-import s from './Task.css'
-
 const thisFile = 'Task.js'
 
 type Props = {
@@ -20,6 +18,7 @@ function Task(props: Props) {
   const cn = g.cn(thisFunc);
 
   return (<>
+    <style dangerouslySetInnerHTML={{__html: g.styler(TaskStyle, null, thisFunc)}} />
     <div comp={thisFunc} className={cn(`task`)} style={g.style(props, style, thisFunc)}>
       <div className={cn(`section pid`)}>{props.pid}</div>
       <div className={cn(`section done`)}>{props.done ? 'true' : 'false'}</div>
@@ -31,3 +30,12 @@ function Task(props: Props) {
 export default Task
 
 const style = (props: Props) => ({});
+
+export function TaskStyle(state, thisFunc) {
+  return `
+  .task { display:block; height:100%; }
+  .section { display:block; }
+  .button { margin:5px; }
+  `
+}
+

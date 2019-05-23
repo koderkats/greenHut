@@ -2,7 +2,6 @@
 
 import React, { useState, useEffect } from 'react'
 import g, { which } from '../../global'
-import s from './TaskList.css'
 
 import api from '../../lib/api/api'
 import Task from '../Task/Task'
@@ -39,6 +38,7 @@ function TaskList(props: Props) {
   });
 
   return (<>
+    <style dangerouslySetInnerHTML={{__html: g.styler(TaskListStyle, null, thisFunc)}} />
     <div comp={thisFunc} className={cn(`tasklist`)} style={g.style(props, style, thisFunc)}>
       <div className={cn(`section`)}>TASKLIST</div>
       <Divider/>
@@ -51,3 +51,11 @@ function TaskList(props: Props) {
 export default TaskList
 
 const style = (props: Props) => ({});
+
+export function TaskListStyle(state, thisFunc) {
+  return `
+  .tasklist { display:block; height:100%; }
+  .section { display:block; }
+  .button { margin:5px; }
+  `
+}
