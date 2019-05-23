@@ -17,6 +17,7 @@ function Counter(props: Props) {
   const [count, setCount] = useState(0); // [state, stateSetter] = useState(initialState)
 
   return (<>
+    <style dangerouslySetInnerHTML={{__html: g.styler(CounterStyle, state, thisFunc)}} />
     <div comp={thisFunc} className={`counter`} style={g.style(props, style, thisFunc)}>
       <div className={`section`}>{`COUNT: ${count}`}</div>
       <div className={`section`}>
@@ -31,3 +32,11 @@ function Counter(props: Props) {
 export default Counter
 
 const style = (props: Props) => ({});
+
+export function CounterStyle(state, thisFunc) {
+  return `
+  .counter { display:block; min-height:200px; height:100%; }
+  .section { display:block; }
+  .button { margin:5px; }  
+  `
+}

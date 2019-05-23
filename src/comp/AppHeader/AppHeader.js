@@ -2,9 +2,6 @@
 
 import React, {useState, useEffect, useContext} from 'react'
 import g, { which } from '../../global'
-// import s from './AppHeader.css'
-import thisStyle from './AppHeader.css.js'
-
 
 import api from '../../lib/api/api'
 import Divider from '../../comp/Divider/Divider'
@@ -24,24 +21,6 @@ function AppHeader(props: Props) {
   const [state, setState] = useContext(g.GlobalContext);
   g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
 
-function styler(style, state, prefix) {
-  const styles = style();
-  let newStyles = {}
-  for (let key in styles) {
-    newStyles[`${prefix}__${key}`] = styles[key]
-  }
-  let styleString = ''
-  console.log('ASDF', newStyles)
-  for (let key in newStyles) {
-    styleString += ` .${key}{\n${newStyles[key]}\n}\n`
-    //newStyles[`${prefix}__${key}`] = styles[key]
-  }
-  //     <style dangerouslySetInnerHTML={{__html: styleString}} />
-
-  return styleString
-}
-
-
   // const [user, setUser] = useState(g.initialState.user);
 
   useEffect(() => {
@@ -55,21 +34,24 @@ function styler(style, state, prefix) {
   }, []);
 
   return (<>
-    <style dangerouslySetInnerHTML={{__html: styler(thisStyle, state, thisFunc)}} />
+    <style dangerouslySetInnerHTML={{__html: g.styler(AppHeaderStyle, state, thisFunc)}} />
     <div comp={thisFunc} className={cn('app_header')} alias={props.alias} style={g.style(props, style, thisFunc)}>
 
       <div className={cn(`segment`)}>
         <div className={cn(`cont`)}>
-          <div className={cn(`item item_1`)}>1</div>
-          <div className={cn(`item item_2`)}>2</div>
-          <div className={cn(`item item_3`)}>3</div>
+          <div className={cn(`item item_1`)}>|&nbsp;&nbsp;|</div>
+          <div className={cn(`item item_2`)}>Dashboard</div>
+          <div className={cn(`item item_3`)}>Workspaces</div>
+          <div className={cn(`item item_4`)}>Reports</div>
         </div>
       </div>
 
-      <div className={cn(`item item_1 right`)}>1</div>
-      <div className={cn(`item item_2 right`)}>{state.user.email}</div>
-      <div className={cn(`item item_3 right`)}>{g.toUpperCase(state.user.alias, 'first')}</div>
-      <div className={cn(`item item_4 right`)}>{state.user.id}</div>
+      <div className={cn(`item right`)}>{g.toUpperCase(state.user.alias, 'first')} V</div>
+      <div className={cn(`item right`)}>?</div>
+      <div className={cn(`item right`)}>+</div>
+      <div className={cn(`item right`)}>
+        <input className={cn(`search`)} placeholder="Search"></input>
+      </div>
     </div>
   </>);
 
@@ -77,4 +59,57 @@ function styler(style, state, prefix) {
 
 export default AppHeader
 
+
+{/* <div className={cn(`item item_1 right`)}>1</div>
+<div className={cn(`item item_2 right`)}>{state.user.email}</div>
+<div className={cn(`item item_3 right`)}>{g.toUpperCase(state.user.alias, 'first')}</div>
+<div className={cn(`item item_4 right`)}>{state.user.id}</div> */}
+
+
 const style = (props: Props) => ({});
+
+
+
+export function AppHeaderStyle(state, thisFunc) {
+  return `
+  .app_header {
+    width:100%;
+  }
+  .search {
+    width:110px;
+    padding-left:10px;
+    border-radius:10px;
+    border:solid #5555 1px;
+  }
+  .segment {
+    padding-left:30px;
+  }
+  .cont {
+    display:-webkit-box;display:-ms-flexbox;display:flex;
+    flex-direction:row;
+    flex-grow:1;
+    flex-shrink:1;
+    flex-basis:auto;
+    height:auto;
+    max-width:100%;
+    width:auto;
+    //background-color:gray;
+   }
+   .item {
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:40px;
+    color:black;
+    text-shadow:1px 1px black;
+    font-size:10px;
+    font-size:15px;
+    padding-left:10px;
+    padding-right:10px;
+   }
+
+  .right {
+    float:right;
+  }
+      `
+}
