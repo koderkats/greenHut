@@ -59,21 +59,22 @@ export default (function Global() {
 	me.style = function(props, styleFunc, thisFunc) {
 		return {...styleFunc(props), ...props.s};
 	}
+	me.styler = function(componentStyle, state, prefix) {	
+		return componentStyle().split('}').map(function(line){
+			const thisClass = line.split('{')[0] ? line.split('{')[0].trim() : ''
+			const thisStyles = line.split('{')[1] ? line.split('{')[1].trim() : ''
+			if (thisClass[0] === '.') {
+				return `.${prefix}__${thisClass[0] !== '.' ? thisClass : thisClass.split('').slice(1).join('')} { ${thisStyles} }\n`
+			} else {
+				return `${thisClass} { ${thisStyles} }\n`
+			}
+		}).slice(0,-1).join('');
+	}
+	
 
 	me.themeStyle = function(state) {
 		return JSON.stringify(state);
 	}
-
-		// (function randomItemColors() {
-    //   const items = document.querySelectorAll('[data-item]');
-    //   for(let item of items){
-    //     var r = Math.floor(255 * Math.random());
-    //     var g = Math.floor(255 * Math.random());
-    //     var b = Math.floor(255 * Math.random());
-    //     item.style.background = `rgb(${r},${g},${b})`
-    //   }
-    // })();
-
 
 	me.which = which;
 	me.switch = which;
