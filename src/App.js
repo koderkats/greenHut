@@ -10,6 +10,7 @@ import DashboardBridge from './comp/DashboardBridge/DashboardBridge'
 import DashboardContent from './comp/DashboardContent/DashboardContent'
 import Counter from './comp/Counter/Counter'
 import TaskList from './comp/TaskList/TaskList'
+import TasksTab from './tabs/TasksTab/TasksTab'
 
 const thisFile = 'App.js'
 
@@ -36,11 +37,9 @@ function App(props: Props) {
         <AppHeader/>
         <Divider/>
         <DashboardBridge/>
-        <DashboardContent children={[
-          <div style={{display:'block'}}>a</div>,
-          <div style={{display:'block'}}>b</div>,
-          <div style={{display:'block'}}>c</div>,
-        ]}/>
+        <DashboardContent>
+          <TasksTab/>
+        </DashboardContent>      
         {/* <TaskList/> */}
       </div>
     </g.GlobalContext.Provider>
@@ -61,6 +60,7 @@ export function AppStyle(state, thisFunc) {
     color:black;
     font-family:arial;
     font-size:16px;
+    overflow:hidden;
   }
   div {
     box-sizing:border-box;
@@ -70,6 +70,7 @@ export function AppStyle(state, thisFunc) {
     display:block;
     position:absolute;
     width:100%;
+    min-height:100%;
   }  
   `
 }
