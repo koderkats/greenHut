@@ -71,10 +71,18 @@ const style = (props: Props) => ({
 
 
 export function DashboardBridgeStyle(state, thisFunc) {
+  const bgTab = '#f2f6f6'
+  const bgTabBorder = '#ccc'
+  const tabSpacing = '10px'
+  const itemPadding = '15px'
+  const fgGreeting = '#ad9178'
+
   return `
   .dashboardbridge {
-    height:64px;
     width:100%;
+    border-bottom:1px solid ${bgTabBorder};
+    //padding-bottom:1px;
+                                                               height:78px;
   }
   .segment {
     padding-left:30px;
@@ -87,13 +95,8 @@ export function DashboardBridgeStyle(state, thisFunc) {
     flex-shrink:1;
     flex-basis:auto;
     max-width:100%;
-    height:auto;
-    width:auto;
    }
   .cont-greeting { min-width:480px; }
-  .cont-left {
-    //min-width:480px;
-  }   
   .cont-right {
     display:flex;
     padding-left:30px;
@@ -102,7 +105,7 @@ export function DashboardBridgeStyle(state, thisFunc) {
 
   .greeting {
     font-size:20px;
-    color:#ad9178;
+    color:${fgGreeting};
   }
   .status {
     font-size:16px;
@@ -110,13 +113,12 @@ export function DashboardBridgeStyle(state, thisFunc) {
   .item {
     height:40px;
     color:black;
-    font-size:10px;
     display:flex;
     justify-content:center;
     align-items:center;
     font-size:14px;
-    padding-left:15px;
-    padding-right:15px;
+    padding-left:${itemPadding};
+    padding-right:${itemPadding};
   }
   .tabs {
     padding-top:5px;
@@ -125,12 +127,13 @@ export function DashboardBridgeStyle(state, thisFunc) {
     display: flex;
     flex-shrink: 0;
     min-width:50px;
-    padding-left:10px; padding-right:10px;
-    margin-right:10px;
+    padding-left:10px;
+    padding-right:10px;
+    margin-right:${tabSpacing};
     font-size:16px;
     border-radius: 5px 5px 0 0; 
-    background-color:#f2f6f6;
-    border: solid #ccc;
+    background-color:${bgTab};
+    border: solid ${bgTabBorder};
     border-width: 1px 1px 0px 1px
   }
   .tab [data-active="true"] {
