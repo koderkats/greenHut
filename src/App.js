@@ -7,6 +7,7 @@ import g, { which } from './global'
 import Divider from './comp/Divider/Divider'
 import AppHeader from './comp/AppHeader/AppHeader'
 import DashboardBridge from './comp/DashboardBridge/DashboardBridge'
+import DashboardContent from './comp/DashboardContent/DashboardContent'
 import Counter from './comp/Counter/Counter'
 import TaskList from './comp/TaskList/TaskList'
 
@@ -35,8 +36,12 @@ function App(props: Props) {
         <AppHeader/>
         <Divider/>
         <DashboardBridge/>
-        <Divider/>
-        <TaskList/>
+        <DashboardContent children={[
+          <div style={{display:'block'}}>a</div>,
+          <div style={{display:'block'}}>b</div>,
+          <div style={{display:'block'}}>c</div>,
+        ]}/>
+        {/* <TaskList/> */}
       </div>
     </g.GlobalContext.Provider>
   </>)

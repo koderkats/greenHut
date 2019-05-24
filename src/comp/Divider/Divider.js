@@ -15,7 +15,8 @@ function Divider(props: Props) {
 
   return (<>
     <style dangerouslySetInnerHTML={{__html: g.styler(DividerStyle, null, thisFunc)}} />
-    <hr comp={thisFunc} className={cn(`comp`)} style={g.style(props, style, thisFunc)}/>
+    {/* <hr comp={thisFunc} className={cn(`comp`)} style={g.style(props, style, thisFunc)}/> */}
+    <div comp={thisFunc} className={cn(`comp`)} style={g.style(props, style, thisFunc)}></div>
   </>);
 }
 
@@ -26,7 +27,11 @@ const style = (props: Props) => ({});
 export function DividerStyle(state, thisFunc) {
 	return `
 	.comp {
-		width:100%;
+    width:100%;
+    margin:0px;
+    padding:0px;
+    border-top:1px solid black;
+    height:0px;
 	}
   `
 }
