@@ -49,10 +49,14 @@ const style = (props: Props) => ({
 
 
 export function DashboardContentStyle(state, thisFunc) {
+  const bg = '#f2f6f6'
   return `
   .dashboardContent {
-    height:64px;
+    flex:1;
+    min-height:100%;
+    height:100%;
     width:100%;
+    background-color:${bg};
   }
   .segment {
     padding-left:30px;
