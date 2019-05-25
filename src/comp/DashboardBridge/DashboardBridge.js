@@ -47,10 +47,10 @@ function DashboardBridge(props: Props) {
 
         <div className={cn(`cont tabs`)}>
           <div className={cn(`cont cont-left tabs`)}>
-          <div className={cn(`tab item`)} tab="tasks" data-active={state.dashboardBridge.activeTab === 'myTasks'}>Tasks</div>
-            <div className={cn(`tab item`)} tab="convos" data-active={state.dashboardBridge.activeTab === 'updates'}>Convos</div>
-            <div className={cn(`tab item`)} tab="notes" data-active={state.dashboardBridge.activeTab === 'myTasks'}>Notes</div>
-            <div className={cn(`tab item`)} tab="files" data-active={state.dashboardBridge.activeTab === 'updates'}>Files</div>
+          <div className={cn(`tab tab-tasks item`)} tab="tasks" data-active={state.dashboardBridge.activeTab === 'tasks'}>Tasks</div>
+            <div className={cn(`tab tab-convos item`)} tab="convos" data-active={state.dashboardBridge.activeTab === 'convos'}>Convos</div>
+            <div className={cn(`tab tab-notes item`)} tab="notes" data-active={state.dashboardBridge.activeTab === 'notes'}>Notes</div>
+            <div className={cn(`tab tab-files item`)} tab="files" data-active={state.dashboardBridge.activeTab === 'files'}>Files</div>
           </div>
 
           <div className={cn(`cont-right`)}>
@@ -74,8 +74,10 @@ const style = (props: Props) => ({
 
 
 export function DashboardBridgeStyle(state, thisFunc) {
+  const bg = 'white'
   const bgTab = '#f2f6f6'
   const bgTabBorder = '#ccc'
+  const tabBorderWidth = '1px'
   const tabSpacing = '10px'
   const itemPadding = '15px'
   const fgGreeting = '#ad9178'
@@ -83,10 +85,19 @@ export function DashboardBridgeStyle(state, thisFunc) {
   return `
   .dashboardbridge {
     width:100%;
-    border-bottom:1px solid ${bgTabBorder};
+    border-bottom:${tabBorderWidth} solid ${bgTabBorder};
     //padding-bottom:1px;
-                                                               height:78px;
+    height:78px;
   }
+
+  .dashboardbridge [data-active="true"] {
+  }
+  .dashboardbridge [data-active="false"] {
+    background-color:${bg};
+    border: none;
+    border-bottom:${tabBorderWidth} solid ${bgTabBorder};
+  }
+
   .segment {
     padding-left:30px;
     width:100%;
@@ -137,7 +148,7 @@ export function DashboardBridgeStyle(state, thisFunc) {
     border-radius: 5px 5px 0 0; 
     background-color:${bgTab};
     border: solid ${bgTabBorder};
-    border-width: 1px 1px 0px 1px
+    border-width: ${tabBorderWidth} ${tabBorderWidth} 0px ${tabBorderWidth}
   }
   .tab [data-active="true"] {
     background-color:black;
