@@ -47,11 +47,14 @@ function App(props: Props) {
   return (<>
     <g.GlobalContext.Provider value={[state, setState]}>
       <style dangerouslySetInnerHTML={{__html: g.styler(AppStyle, state, thisFunc)}} />
-      <div comp={`${thisFunc}`} className={cn(`app-container`)} style={g.style(props, style, thisFunc)} data-app-page={state.dashboardBridge.activePage} data-dbb-tab={state.dashboardBridge.activeTab}>
+      <div comp={`${thisFunc}`} className={cn(`app-container`)} style={g.style(props, style, thisFunc)} 
+            data-app-page={state.dashboardBridge.activePage} data-dbb-tab={state.dashboardBridge.activeTab}>
         <AppHeader/>
         <Divider/>
         <DashboardBridge/>
         <DashboardContent>
+          <TasksTab/>
+          <TasksTab/>
           <TasksTab/>
         </DashboardContent>      
         {/* <TaskList/> */}
