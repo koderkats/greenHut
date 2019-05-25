@@ -1,6 +1,7 @@
-import React from 'react'
+import React, {useContext} from 'react'
 
 export default (function Global() {
+
 	let me = {}
 
 	me.isDev = true
@@ -9,16 +10,36 @@ export default (function Global() {
 	me.logFunc = true
 	me.logLog = true
 	me.logDir = true
+ 
+	// me.state = {
+	// 	app: { width:0, height:0, widthHeigh:'', },
+	// 	page: { activePage:'default', activeTab:'default', },
+	// 	user: { id:4, alias:'user', email:'user@u.com', },
+	// 	dashboardBridge: { activeTab:'default', },
+	// 	dashboard: { height:100, }
+	// 	// dashboardBridge: { activeTab:'updates' },
+	// }
 
-	me.initialState = {
+	me.state = {
 		app: { width:0, height:0, widthHeigh:'', },
+		appHeader: { height:0, },
+		dashboardBridge: { height:0, activeTab:'default'},
 		page: { activePage:'default', activeTab:'default', },
 		user: { id:4, alias:'user', email:'user@u.com', },
-		dashboardBridge: { activeTab:'default', },
-		dashboard: { height:100, }
-		// dashboardBridge: { activeTab:'updates' },
+		dashboardContent: { height:0, }
 	}
-	me.GlobalContext = React.createContext({});
+
+	// me.GlobalContext = React.createContext(me.state);
+
+	// me.GlobalContext = React.createContext(me.state);
+	// const {Provider: ColorProvider, Consumer: ColorConsumer} = React.createContext();
+
+	// me.StateComp = function(props) {
+	// 	const [state, setState] = useContext(me.GlobalContext);
+	// 	return (
+	// 		<div>{`${JSON.stringify(state)}`}</div>
+	// 	);
+	// }
 
 	me.shortTime = function() {
 		return Math.floor(new Date()).toString().split('').slice(-5).join('');

@@ -2,6 +2,7 @@
 
 import React, {useState, useEffect, useContext} from 'react'
 import g, { which } from '../../global'
+import { GlobalContext } from "../../context";
 
 import api from '../../lib/api/api'
 import Divider from '../../comp/Divider/Divider'
@@ -18,29 +19,21 @@ function DashboardContent(props: Props) {
   g.func(thisFile, thisFunc, props);
   const cn = g.cn(thisFunc);
 
-  const [state, setState] = useContext(g.GlobalContext);
+  // const [state, setState] = useContext(g.GlobalContext);
+  // g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
+
+  // useEffect(()=>{
+  //   setState(Object.assign({}, state, {
+  //     dashboard: {
+  //       ...state.dashboard,
+  //       height: document.querySelector(`.${thisFunc}`).clientHeight,
+  //     }
+  //   }));
+  // }, [state.app.widthHeight]);
+
+  const globalContext = useContext(GlobalContext);
+  const { state } = globalContext;
   g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
-
-  useEffect(() => {
-    g.func(thisFile, thisFunc + ':useEffect');
-
-    g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT, useeffect');
-
-    api.getUser(1).then((user)=>{
-      g.func(thisFile, thisFunc + ':useEffect:api.getUser:resolved', user);
-      setState( Object.assign({}, state, {user}) );  
-    });
-  }, []);
-
-  useEffect(()=>{
-    setState(Object.assign({}, state, {
-      dashboard: {
-        ...state.dashboard,
-        height: document.querySelector(`.${thisFunc}`).clientHeight,
-      }
-    }));
-    g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT, [ON_RESIZE]');
-  }, [state.app.widthHeight]);
 
   return (<>
     <style dangerouslySetInnerHTML={{__html: g.styler(DashboardContentStyle, state, thisFunc)}} />
