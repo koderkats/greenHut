@@ -15,7 +15,7 @@ export default (function Global() {
 		page: { activePage:'default', activeTab:'default', },
 		user: { id:4, alias:'user', email:'user@u.com', },
 		dashboardBridge: { activeTab:'default', },
-		dashboard: { height:60, }
+		dashboard: { height:100, }
 		// dashboardBridge: { activeTab:'updates' },
 	}
 	me.GlobalContext = React.createContext({});
