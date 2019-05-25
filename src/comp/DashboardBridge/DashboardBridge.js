@@ -44,6 +44,12 @@ function DashboardBridge(props: Props) {
 
     // Set Active Tab
     e.target.setAttribute('data-active', 'true');
+    setState(Object.assign({}, state, {
+      dashboardBridge: {
+        ...state.dashboardBridge,
+        activeTab: e.target.attributes.tab.value,
+      }
+    }));
   }
 
   const globalContext = useContext(GlobalContext);
