@@ -11,9 +11,11 @@ export default (function Global() {
 	me.logDir = true
 
 	me.initialState = {
-		page: {activePage:'default', activeTab:'default'},
-		user: { id:4, alias:'user', email:'user@u.com' },
-		dashboardBridge: { activeTab:'default' },
+		app: { width:0, height:0, widthHeigh:'', },
+		page: { activePage:'default', activeTab:'default', },
+		user: { id:4, alias:'user', email:'user@u.com', },
+		dashboardBridge: { activeTab:'default', },
+		dashboard: { height:60, }
 		// dashboardBridge: { activeTab:'updates' },
 	}
 	me.GlobalContext = React.createContext({});
@@ -60,7 +62,7 @@ export default (function Global() {
 		return {...styleFunc(props), ...props.s};
 	}
 	me.styler = function(componentStyle, state, prefix) {	
-		return componentStyle().split('}').map(function(line){
+		return componentStyle(state, prefix).split('}').map(function(line){
 			const thisClass = line.split('{')[0] ? line.split('{')[0].trim() : ''
 			const thisStyles = line.split('{')[1] ? line.split('{')[1].trim() : ''
 			if (thisClass[0] === '.') {

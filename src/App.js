@@ -26,8 +26,22 @@ function App(props: Props) {
   const [state, setState] = useState(g.initialState);
 
   useEffect(()=>{
+    g.func(thisFile, thisFunc + ':useEffect [SET_INITIAL_STATE]');
     // setState({page:'home', count:12});
     setState(g.initialState);
+
+    window.addEventListener('resize', () => {
+      g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT, [ON_RESIZE]');
+      setState(Object.assign({}, state, {
+        app: {
+          ...state.app,
+          width: window.innerWidth,
+          height: window.innerHeight,
+          widthHeight: `${window.innerWidth}x${window.innerHeight}`,
+        }
+      }));
+    });
+
   },[]);
 
   return (<>

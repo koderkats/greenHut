@@ -30,8 +30,17 @@ function DashboardContent(props: Props) {
       g.func(thisFile, thisFunc + ':useEffect:api.getUser:resolved', user);
       setState( Object.assign({}, state, {user}) );  
     });
-
   }, []);
+
+  useEffect(()=>{
+    setState(Object.assign({}, state, {
+      dashboard: {
+        ...state.dashboard,
+        height: document.querySelector(`.${thisFunc}`).clientHeight,
+      }
+    }));
+    g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT, [ON_RESIZE]');
+  }, [state.app.widthHeight]);
 
   return (<>
     <style dangerouslySetInnerHTML={{__html: g.styler(DashboardContentStyle, state, thisFunc)}} />
