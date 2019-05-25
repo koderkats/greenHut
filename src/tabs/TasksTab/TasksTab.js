@@ -2,6 +2,7 @@
 
 import React, {useState, useEffect, useContext} from 'react'
 import g, { which } from '../../global'
+import { GlobalContext } from "../../context";
 
 const thisFile = 'TasksTab.js'
 
@@ -58,8 +59,9 @@ function TasksTab(props: Props) {
   g.func(false, thisFile, thisFunc, props);
   const cn = g.cn(thisFunc);
 
-  const [state, setState] = useContext(g.GlobalContext);
-    g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
+  const globalContext = useContext(GlobalContext);
+  const { state } = globalContext;
+  g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
 
 
   return (<>
@@ -104,7 +106,7 @@ export function TasksTabStyle(state, thisFunc) {
   const itemMargin = '5px'
   return `
   .comp {
-    height:${state.dashboard.height-100}px;
+    height:${state.dashboardContent.height - 100}px;
     background:${bg};
     overflow:auto;
     width:360px;

@@ -14,7 +14,7 @@ function Counter(props: Props) {
   const thisFunc = 'Counter'
   g.func(thisFile, thisFunc, props);
 
-  const [count, setCount] = useState(0); // [state, stateSetter] = useState(initialState)
+  const [count, setCount] = useState(0); // [state, stateSetter] = useState(state)
 
   return (<>
     <style dangerouslySetInnerHTML={{__html: g.styler(CounterStyle, state, thisFunc)}} />

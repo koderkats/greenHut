@@ -2,6 +2,7 @@
 
 import React, {useState, useEffect, useContext} from 'react'
 import g, { which } from '../../global'
+import { GlobalContext } from "../../context";
 
 import api from '../../lib/api/api'
 import Divider from '../../comp/Divider/Divider'
@@ -18,22 +19,13 @@ function AppHeader(props: Props) {
   g.func(thisFile, thisFunc, props);
   const cn = g.cn(thisFunc);
 
-  const [state, setState] = useContext(g.GlobalContext);
+  const globalContext = useContext(GlobalContext);
+  const { state, setState } = globalContext;
   g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
+  
 
-  // const [user, setUser] = useState(g.initialState.user);
-
-  useEffect(() => {
-    g.func(thisFile, thisFunc + ':useEffect');
-
-    api.getUser(1).then((user)=>{
-      g.func(thisFile, thisFunc + ':useEffect:api.getUser:resolved', user);
-      setState( Object.assign({}, state, {user}) );
-    });
-
-  }, []);
-
-  return (<>
+  return (
+      <>
     <style dangerouslySetInnerHTML={{__html: g.styler(AppHeaderStyle, state, thisFunc)}} />
     <div comp={thisFunc} className={cn('app_header')} alias={props.alias} style={g.style(props, style, thisFunc)}>
 
@@ -53,7 +45,8 @@ function AppHeader(props: Props) {
         <input className={cn(`search`)} placeholder="Search"></input>
       </div>
     </div>
-  </>);
+    </>
+  );
 
 }
 
