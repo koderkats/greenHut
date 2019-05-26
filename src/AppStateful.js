@@ -5,6 +5,7 @@ import { hot } from 'react-hot-loader'
 import g, { which } from './global'
 import { GlobalContext } from "./context";
 
+import Debug from './comp/Debug/Debug'
 import Divider from './comp/Divider/Divider'
 import AppHeader from './comp/AppHeader/AppHeader'
 import DashboardBridge from './comp/DashboardBridge/DashboardBridge'
@@ -91,6 +92,7 @@ function AppStateful(props: Props) {
   });
   
   return (<>
+      <Debug/>
       <style dangerouslySetInnerHTML={{__html: g.styler(AppStatefulStyle, state, thisFunc)}} />
       <div comp={`${thisFunc}`} className={cn(`app-container`)} style={g.style(props, style, thisFunc)} data-app-page={state.dashboardBridge.activePage} data-dbb-tab={state.dashboardBridge.activeTab}>
           <AppHeader/>
