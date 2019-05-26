@@ -58,32 +58,30 @@ function DashboardBridge(props: Props) {
 
 
   return (<>
-    <style dangerouslySetInnerHTML={{__html: g.styler(DashboardBridgeStyle, state, thisFunc)}} />
-    <div comp={thisFunc} className={cn(`dashboardbridge`)} alias={props.alias} style={g.style(props, style, thisFunc)}>
+  <style dangerouslySetInnerHTML={{__html: g.styler(DashboardBridgeStyle, state, thisFunc)}} />
+  <div comp={thisFunc} className={cn(`dashboardbridge`)} alias={props.alias} style={g.style(props, style, thisFunc)}>
+    <div className={cn(`segment`)}>
 
-      <div className={cn(`segment`)}>
-        <div className={cn(`cont-greeting`)}>
-            <div className={cn(`greeting`)}><span>|&nbsp;&nbsp;|</span> Workspace</div>
-        </div>
+      <div className={cn(`cont-greeting`)}>
+        <div className={cn(`greeting`)}><span>|&nbsp;&nbsp;|</span> Workspace</div>
+      </div>
 
-        <div className={cn(`cont tabs`)}>
-          <div className={cn(`cont cont-left tabs`)}>
+      <div className={cn(`cont tabs`)}>
+        <div className={cn(`cont cont-left tabs`)}>
           <div className={cn(`tab tab-tasks item`)} tab="tasks" data-active={state.dashboardBridge.activeTab === 'tasks'} onClick={(e)=>onTabClick(e)}>Tasks</div>
-            <div className={cn(`tab tab-convos item`)} tab="convos" data-active={state.dashboardBridge.activeTab === 'convos'} onClick={(e)=>onTabClick(e)}>Convos</div>
-            <div className={cn(`tab tab-notes item`)} tab="notes" data-active={state.dashboardBridge.activeTab === 'notes'} onClick={(e)=>onTabClick(e)}>Notes</div>
-            <div className={cn(`tab tab-files item`)} tab="files" data-active={state.dashboardBridge.activeTab === 'files'} onClick={(e)=>onTabClick(e)}>Files</div>
-          </div>
-
-          <div className={cn(`cont-right`)}>
-            <div className={cn(`item`)}>|&nbsp;&nbsp;|</div>
-            <div className={cn(`item`)}>|&nbsp;&nbsp;|</div>
-            <div className={cn(`item`)}>|&nbsp;&nbsp;|</div>
-          </div>
+          <div className={cn(`tab tab-convos item`)} tab="convos" data-active={state.dashboardBridge.activeTab === 'convos'} onClick={(e)=>onTabClick(e)}>Convos</div>
+          <div className={cn(`tab tab-notes item`)} tab="notes" data-active={state.dashboardBridge.activeTab === 'notes'} onClick={(e)=>onTabClick(e)}>Notes</div>
+          <div className={cn(`tab tab-files item`)} tab="files" data-active={state.dashboardBridge.activeTab === 'files'} onClick={(e)=>onTabClick(e)}>Files</div>
         </div>
-
+        <div className={cn(`cont-right`)}>
+          <div className={cn(`item`)}>|&nbsp;&nbsp;|</div>
+          <div className={cn(`item`)}>|&nbsp;&nbsp;|</div>
+          <div className={cn(`item`)}>|&nbsp;&nbsp;|</div>
+        </div>
       </div>
 
     </div>
+  </div>
   </>);
 
 }
