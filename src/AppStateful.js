@@ -97,10 +97,11 @@ function AppStateful(props: Props) {
         <Divider/>
         <DashboardBridge/>
         <DashboardContent>
-        <TasksTab/>
-        <TasksTab/>
-        <TasksTab/>
-        {/* <TaskList/> */}
+          {state.dashboardBridge.activeTab === 'tasks' ? <TasksTab/> : ''}
+          {state.dashboardBridge.activeTab === 'convos' ? <div>CONVOS</div> : ''}
+          {state.dashboardBridge.activeTab === 'notes' ? <div>NOTES</div> : ''}
+          {state.dashboardBridge.activeTab === 'files' ? <div>FILES</div> : ''}
+          {/* <TaskList/> */}
         </DashboardContent>
       </div>
   </>)
