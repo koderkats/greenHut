@@ -60,13 +60,24 @@ function Debug(props: Props) {
   const cn = g.cn(thisFunc);
 
   const globalContext = useContext(GlobalContext);
-  const { state } = globalContext;
+  const { state, setState } = globalContext;
+
   g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
 
 
+  function debugToggleMaximized(state, setState) {
+    const tabs = document.querySelectorAll('.DashboardBridge.tab');
+    setState(Object.assign({}, state, {
+      debug: {
+        ...state.debug,
+        maximized: !state.debug.maximized
+      }
+    }));
+  }
+
   return (<>
     <style dangerouslySetInnerHTML={{__html: g.styler(DebugStyle, state, thisFunc)}} />
-    <div comp={thisFunc} className={cn(`debug`)} style={g.style(props, style, thisFunc)}>
+    <div comp={thisFunc} className={cn(`debug`)} style={g.style(props, style, thisFunc)} onClick={(e)=>debugToggleMaximized(state, setState)}>
       <div className={cn(`item`)}>Debug Content</div>
       <div className={cn(`item`)}>Debug Content</div>
       <div className={cn(`item`)}>Debug Content</div>
@@ -96,9 +107,9 @@ export function DebugStyle(state, thisFunc) {
     display:block;
     position:fixed;
     bottom:0px;
-    right:0px;
+    left:0px;
     width:100%;
-    max-width:360px;
+    max-width:${state.debug.maximized ? '360' : '40'}px;
     height:120px;
     padding:7px 10px 7px 10px;
     color:white;
@@ -107,7 +118,7 @@ export function DebugStyle(state, thisFunc) {
     font-weight:bold;
     text-shadow: 2px 2px black;
     border:1px solid gray;
-    overflow:auto;
+    overflow:${state.debug.maximized ? 'auto' : 'hidden'};
     z-index:2000000000;
   }
   .item {
