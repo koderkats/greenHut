@@ -21,6 +21,7 @@ export default (function Global() {
 	// }
 
 	me.state = {
+		debug: { maximized:true },
 		app: { width:0, height:0, widthHeigh:'', },
 		appHeader: { height:0, },
 		dashboardBridge: { height:0, activeTab:'tasks'},
