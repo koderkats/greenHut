@@ -1,4 +1,4 @@
-import g, { which } from '../../global'
+import g from '../../global'
 
 const thisFile = 'util.js'
 

@@ -1,7 +1,7 @@
 // @flow
 
 import React, {useState, useEffect, useContext} from 'react'
-import g, { which } from '../../global'
+import g from '../../global'
 import { GlobalContext } from "../../context";
 
 const thisFile = 'TasksTab.js'
