@@ -1,7 +1,7 @@
 // @flow
 
-import React, {useState, useEffect, useContext} from 'react'
-import g, { which } from '../../global'
+import React, {useState, useEffect, useContext, useReducer} from 'react'
+import g from '../../global'
 import { GlobalContext } from "../../context";
 
 const thisFile = 'Debug.js'
@@ -9,10 +9,28 @@ const thisFile = 'Debug.js'
 type Props = {
 }
 
+
+// function reducerDebug(state, action) {
+//   switch (action.type) {
+//     case 'TOOGLE_MAXIMIZED':
+//       return Object.assign({}, state, {
+//         debug: {
+//           ...state.debug,
+//           maximized: !state.debug.maximized,
+//         }
+//       });
+//     default:
+//       throw new Error();
+//   }
+// }
+
 function TaskListCont(props: Props) {
   const thisFunc = 'TaskListCont'
   g.func(false, thisFile, thisFunc + ':TaskListCont', props);
   const cn = g.cn(thisFunc);
+
+  const {state, dispatch} = useContext(GlobalContext);
+  
   return (<>
     <style dangerouslySetInnerHTML={{__html: g.styler(TaskListContStyle, null, thisFunc)}} />
     <div comp={thisFunc} className={cn(`comp`)}>
@@ -30,8 +48,6 @@ export function TaskListContStyle(state, thisFunc) {
   }
   `
 }
-
-
 function Head(props: Props) {
   const thisFunc = 'Head'
   g.func(false, thisFile, thisFunc + ':Head', props);
@@ -59,40 +75,28 @@ function Debug(props: Props) {
   g.func(false, thisFile, thisFunc, props);
   const cn = g.cn(thisFunc);
 
-  const globalContext = useContext(GlobalContext);
-  const { state, setState } = globalContext;
+  const {state, dispatch} = useContext(GlobalContext)
 
-  g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
+  // const { state, setState } = globalContext;
+  // const [state: {...state}, dispatch] = useReducer(reducerDebug, initialState);
+
+  // g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
 
 
-  function debugToggleMaximized(state, setState) {
-    const tabs = document.querySelectorAll('.DashboardBridge.tab');
-    setState(Object.assign({}, state, {
-      debug: {
-        ...state.debug,
-        maximized: !state.debug.maximized
-      }
-    }));
-  }
+  // function debugToggleMaximized(state, setState) {
+  //   const tabs = document.querySelectorAll('.DashboardBridge.tab');
+  //   setState(Object.assign({}, state, {
+  //     debug: {
+  //       ...state.debug,
+  //       maximized: !state.debug.maximized
+  //     }
+  //   }));
+  // }
 
   return (<>
     <style dangerouslySetInnerHTML={{__html: g.styler(DebugStyle, state, thisFunc)}} />
-    <div comp={thisFunc} className={cn(`debug`)} style={g.style(props, style, thisFunc)} onClick={(e)=>debugToggleMaximized(state, setState)}>
-      <div className={cn(`item`)}>Debug Content</div>
-      <div className={cn(`item`)}>Debug Content</div>
-      <div className={cn(`item`)}>Debug Content</div>
-      <div className={cn(`item`)}>Debug Content</div>
-      <div className={cn(`item`)}>Debug Content</div>
-      <div className={cn(`item`)}>Debug Content</div>
-      <div className={cn(`item`)}>Debug Content</div>
-      <div className={cn(`item`)}>Debug Content</div>
-      <div className={cn(`item`)}>Debug Content</div>
-      <div className={cn(`item`)}>Debug Content</div>
-      <div className={cn(`item`)}>Debug Content</div>
-      <div className={cn(`item`)}>Debug Content</div>
-      <div className={cn(`item`)}>Debug Content</div>
-      <div className={cn(`item`)}>Debug Content</div>
-      <div className={cn(`item`)}>Debug Content</div>
+    <div comp={thisFunc} className={cn(`debug`)} style={g.style(props, style, thisFunc)} onClick={()=>alert()}>
+      <div className={cn(`item`)}>{JSON.stringify(state)}</div>
     </div>
   </>);
 }
@@ -109,16 +113,16 @@ export function DebugStyle(state, thisFunc) {
     bottom:0px;
     left:0px;
     width:100%;
-    max-width:${state.debug.maximized ? '360' : '40'}px;
+    max-width:${true ? '360' : '40'}px;
     height:120px;
     padding:7px 10px 7px 10px;
     color:white;
     background-color:#f009;
-    font-size:20px;
-    font-weight:bold;
+    font-size:12px;
+    font-weight:unset;
     text-shadow: 2px 2px black;
     border:1px solid gray;
-    overflow:${state.debug.maximized ? 'auto' : 'hidden'};
+    overflow:${true ? 'auto' : 'hidden'};
     z-index:2000000000;
   }
   .item {
@@ -126,3 +130,6 @@ export function DebugStyle(state, thisFunc) {
   }
   `
 }
+
+// max-width:${state.state.debug.maximized ? '360' : '40'}px;
+// overflow:${state.state.debug.maximized ? 'auto' : 'hidden'};

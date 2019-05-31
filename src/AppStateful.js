@@ -2,7 +2,7 @@
 
 import React, {useContext, useState, useEffect} from 'react'
 import { hot } from 'react-hot-loader'
-import g, { which } from './global'
+import g from './global'
 import { GlobalContext } from "./context";
 
 import Debug from './comp/Debug/Debug'
@@ -30,72 +30,79 @@ function AppStateful(props: Props) {
   g.func(thisFile, thisFunc, props);
   const cn = g.cn(thisFunc);
 
+
   // const [state, setState] = useState(g.state);
   // g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
   // const [state, setState] = useContext(g.GlobalContext);
 
-  const globalContext = useContext(GlobalContext);
-  const { state, setState } = globalContext;
-  g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
+  // const globalContext = useContext(GlobalContext);
+  // // const { state, setState } = globalContext;
+  // const [state, dispatch] = useReducer
+  // g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
 
 
 
-  useEffect(()=>{
-    g.func(thisFile, thisFunc + ':useEffect [SET_INITIAL_STATE]');
+  // useEffect(()=>{
+  //   g.func(thisFile, thisFunc + ':useEffect [SET_INITIAL_STATE]');
 
-    window.addEventListener('resize', () => {
-      g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT, [ON_RESIZE]');
-      setState(Object.assign({}, state, {
-        app: {
-          ...state.app,
-          width: window.innerWidth,
-          height: window.innerHeight,
-          widthHeight: `${window.innerWidth}x${window.innerHeight}`,
-        },
-        appHeader: {
-          ...state.appHeader,
-          height: document.querySelector(`.AppHeader`).clientHeight,
-        },
-        dashboardBridge: {
-          ...state.dashboardBridge,
-          height: document.querySelector(`.DashboardBridge`).clientHeight,
-        },
-        dashboardContent: {
-          height: window.innerHeight - document.querySelector(`.AppHeader`).clientHeight - document.querySelector(`.DashboardBridge`).clientHeight
-        }
-      }));
-    });
-  },[]);
+  //   window.addEventListener('resize', () => {
+  //     // g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT, [ON_RESIZE]');
+  //     setState(Object.assign({}, state, {
+  //       app: {
+  //         ...state.app,
+  //         width: window.innerWidth,
+  //         height: window.innerHeight,
+  //         widthHeight: `${window.innerWidth}x${window.innerHeight}`,
+  //       },
+  //       appHeader: {
+  //         ...state.appHeader,
+  //         height: document.querySelector(`.AppHeader`).clientHeight,
+  //       },
+  //       dashboardBridge: {
+  //         ...state.dashboardBridge,
+  //         height: document.querySelector(`.DashboardBridge`).clientHeight,
+  //       },
+  //       dashboardContent: {
+  //         height: window.innerHeight - document.querySelector(`.AppHeader`).clientHeight - document.querySelector(`.DashboardBridge`).clientHeight
+  //       }
+  //     }));
+  //   });
+  // },[]);
 
-  useEffect(()=>{
-    if (!state.app.widthHeight || state.app.widthHeight === '') {
-      setState(Object.assign({}, state, {
-        app: {
-          ...state.app,
-          width: window.innerWidth,
-          height: window.innerHeight,
-          widthHeight: `${window.innerWidth}x${window.innerHeight}`,
-        },
-        appHeader: {
-          ...state.appHeader,
-          height: document.querySelector(`.AppHeader`).clientHeight,
-        },
-        dashboardBridge: {
-          ...state.dashboardBridge,
-          height: document.querySelector(`.DashboardBridge`).clientHeight,
-        },
-        dashboardContent: {
-          height: window.innerHeight - document.querySelector(`.AppHeader`).clientHeight - document.querySelector(`.DashboardBridge`).clientHeight
-        }
-      }));
-    }
-  });
+  // useEffect(()=>{
+  //   if (!state.app.widthHeight || state.app.widthHeight === '') {
+  //     alert('APP_STATEFUL');
+  //     g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT, [REDUCER]');
+
+  //     // setState(Object.assign({}, state, {
+  //     //   app: {
+  //     //     ...state.app,
+  //     //     width: window.innerWidth,
+  //     //     height: window.innerHeight,
+  //     //     widthHeight: `${window.innerWidth}x${window.innerHeight}`,
+  //     //   },
+  //     //   appHeader: {
+  //     //     ...state.appHeader,
+  //     //     height: document.querySelector(`.AppHeader`).clientHeight,
+  //     //   },
+  //     //   dashboardBridge: {
+  //     //     ...state.dashboardBridge,
+  //     //     height: document.querySelector(`.DashboardBridge`).clientHeight,
+  //     //   },
+  //     //   dashboardContent: {
+  //     //     height: window.innerHeight - document.querySelector(`.AppHeader`).clientHeight - document.querySelector(`.DashboardBridge`).clientHeight
+  //     //   }
+  //     // }));
+  //   }
+  // });
   
   return (<>
+      <Counter/>
       <Debug/>
-      <style dangerouslySetInnerHTML={{__html: g.styler(AppStatefulStyle, state, thisFunc)}} />
-      <div comp={`${thisFunc}`} className={cn(`app-container`)} style={g.style(props, style, thisFunc)} data-app-page={state.dashboardBridge.activePage} data-dbb-tab={state.dashboardBridge.activeTab}>
-          <AppHeader/>
+      <style dangerouslySetInnerHTML={{__html: g.styler(AppStatefulStyle, null/* state */, thisFunc)}} />
+      {/* <div comp={`${thisFunc}`} className={cn(`app-container`)} style={g.style(props, style, thisFunc)} data-app-page={state.dashboardBridge.activePage} data-dbb-tab={state.dashboardBridge.activeTab}> */}
+      <div comp={`${thisFunc}`} className={cn(`app-container`)} style={g.style(props, style, thisFunc)} data-app-page={'default'} data-dbb-tab={'mytasks'}>
+          {/* <AppHeader/>
         <Divider/>
         <DashboardBridge/>
         <DashboardContent>
@@ -103,8 +110,7 @@ function AppStateful(props: Props) {
           {state.dashboardBridge.activeTab === 'convos' ? <div>CONVOS</div> : ''}
           {state.dashboardBridge.activeTab === 'notes' ? <div>NOTES</div> : ''}
           {state.dashboardBridge.activeTab === 'files' ? <div>FILES</div> : ''}
-          {/* <TaskList/> */}
-        </DashboardContent>
+        </DashboardContent> */}
       </div>
   </>)
 }

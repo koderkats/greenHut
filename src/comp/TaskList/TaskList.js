@@ -1,7 +1,7 @@
 // @flow
 
 import React, { useState, useEffect } from 'react'
-import g, { which } from '../../global'
+import g from '../../global'
 
 import api from '../../lib/api/api'
 import Task from '../Task/Task'

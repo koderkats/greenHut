@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react'
-import g, { which } from '../../global'
+import g from '../../global'
 import s from './WorkspacePage.css'
 
 const thisFile = 'WorkspacePage.js'
