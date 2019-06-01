@@ -1,4 +1,4 @@
-import g from '../../global'
+import g from '../global'
 
 const thisFile = 'api.js'
 

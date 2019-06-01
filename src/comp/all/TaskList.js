@@ -1,11 +1,11 @@
 // @flow
 
 import React, { useState, useEffect } from 'react'
-import g from '../../global'
+import g from '../../all/global'
 
-import api from '../../lib/api/api'
-import Task from '../Task/Task'
-import Divider from '../Divider/Divider'
+import api from '../../all/lib/api'
+import Task from './Task'
+import Divider from './Divider'
 
 const thisFile = 'TaskList.js'
 
