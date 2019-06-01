@@ -59,10 +59,7 @@ function TasksTab(props: Props) {
   g.func(false, thisFile, thisFunc, props);
   const cn = g.cn(thisFunc);
 
-  const globalContext = useContext(GlobalContext);
-  const { state } = globalContext;
-  g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
-
+  const {state, dispatch} = useContext(GlobalContext)
 
   return (<>
   <TaskListCont>
@@ -106,7 +103,7 @@ export function TasksTabStyle(state, thisFunc) {
   const itemMargin = '5px'
   return `
   .comp {
-    height:${state.dashboardContent.height - 100}px;
+    height:${state.dashboard.height - 100}px;
     background:${bg};
     overflow:auto;
     width:360px;
