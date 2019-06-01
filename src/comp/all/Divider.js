@@ -1,7 +1,7 @@
 // @flow
 
 import * as React from 'react'
-import g from '../../global'
+import g from '../../all/global'
 
 const thisFile = 'Divider.js'
 

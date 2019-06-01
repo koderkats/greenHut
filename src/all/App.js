@@ -5,15 +5,15 @@ import { hot } from 'react-hot-loader'
 import g from './global'
 import { GlobalContextProvider, GlobalContext } from "./context";
 
-import Debug from './comp/Debug/Debug'
-import Divider from './comp/Divider/Divider'
+import Debug from '../comp/all/Debug'
+import Divider from '../comp/all/Divider'
 import AppStateful from './AppStateful'
-import AppHeader from './comp/AppHeader/AppHeader'
-import DashboardBridge from './comp/DashboardBridge/DashboardBridge'
-import DashboardContent from './comp/DashboardContent/DashboardContent'
-import Counter from './comp/Counter/Counter'
-import TaskList from './comp/TaskList/TaskList'
-import TasksTab from './tabs/TasksTab/TasksTab'
+import AppHeader from '../comp/all/AppHeader'
+import DashboardBridge from '../comp/all/DashboardBridge'
+import DashboardContent from '../comp/all/DashboardContent'
+import Counter from '../comp/all/Counter'
+import TaskList from '../comp/all/TaskList'
+import TasksTab from '../comp/tabs/TasksTab'
 
 
 
