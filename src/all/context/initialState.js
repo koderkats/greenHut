@@ -16,8 +16,8 @@ export default {
 		height:0,
 	},
 
-	dashboardBridge: {
-		height:0, activeTab:'tasks',
+	dashboard: {
+		bridgeHeight:0, activeTab:'tasks',
 	},
 
 	page: {
@@ -33,3 +33,7 @@ export default {
 	},
 
 }
+
+// dashboardBridge: {
+// 	height:0, activeTab:'tasks',
+// },
