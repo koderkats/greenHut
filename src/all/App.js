@@ -15,8 +15,6 @@ import Counter from '../comp/all/Counter'
 import TaskList from '../comp/all/TaskList'
 import TasksTab from '../comp/tabs/TasksTab'
 
-
-
 // export const GlobalContext = React.createContext(g.state);
 
 
