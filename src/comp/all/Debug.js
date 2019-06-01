@@ -7,22 +7,8 @@ import { GlobalContext } from "../../all/context";
 const thisFile = 'Debug.js'
 
 type Props = {
+  
 }
-
-
-// function reducerDebug(state, action) {
-//   switch (action.type) {
-//     case 'TOOGLE_MAXIMIZED':
-//       return Object.assign({}, state, {
-//         debug: {
-//           ...state.debug,
-//           maximized: !state.debug.maximized,
-//         }
-//       });
-//     default:
-//       throw new Error();
-//   }
-// }
 
 function TaskListCont(props: Props) {
   const thisFunc = 'TaskListCont'
@@ -77,26 +63,10 @@ function Debug(props: Props) {
 
   const {state, dispatch} = useContext(GlobalContext)
 
-  // const { state, setState } = globalContext;
-  // const [state: {...state}, dispatch] = useReducer(reducerDebug, initialState);
-
-  // g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
-
-
-  // function debugToggleMaximized(state, setState) {
-  //   const tabs = document.querySelectorAll('.DashboardBridge.tab');
-  //   setState(Object.assign({}, state, {
-  //     debug: {
-  //       ...state.debug,
-  //       maximized: !state.debug.maximized
-  //     }
-  //   }));
-  // }
-
   return (<>
     <style dangerouslySetInnerHTML={{__html: g.styler(DebugStyle, state, thisFunc)}} />
     <div comp={thisFunc} className={cn(`debug`)} style={g.style(props, style, thisFunc)} onClick={()=>dispatch({ type:'DEBUG_TOGGLE_MAXIMIZED' })}>
-      <div className={cn(`item`)}>{JSON.stringify(state)}</div>
+      <div className={cn(`item`)}>{JSON.stringify(state, null, '\n')}</div>
     </div>
   </>);
 }
@@ -131,6 +101,3 @@ export function DebugStyle(state, thisFunc) {
   }
   `
 }
-
-// max-width:${state.state.debug.maximized ? '360' : '40'}px;
-// overflow:${state.state.debug.maximized ? 'auto' : 'hidden'};
