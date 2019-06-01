@@ -1,26 +1,33 @@
 import React, { createContext, useState, useReducer } from "react";
 import g from '../global'
+import combineReducers from './combineReducers'
 
 export const Context = createContext({});
 
-// export const reducer = function(state, action) {
-export const reducer = function(state, action) {
-      console.log(state)
+const counterReducer = function(state, action) {
   return g.which(action.type, {
     'COUNTER_DECREMENT': Object.assign({}, state, {
-      counter: {
-        ...state.counter,
-        count: state.counter.count - 1,
-      }
+      count: state.count - 1,
     }),
     'COUNTER_INCREMENT': Object.assign({}, state, {
-      counter: {
-        ...state.counter,
-        count: state.counter.count + 1,
-      }
+      count: state.count + 1,
     }),
   }, state);
 }
+
+
+const debugReducer = function(state, action) {
+  return g.which(action.type, {
+    'DEBUG_TOGGLE_MAXIMIZED': Object.assign({}, state, {
+      isMaximized: !state.isMaximized,
+    })
+  }, state);  
+}
+
+export const reducer = combineReducers({
+  counter: counterReducer,
+  debug: debugReducer,
+})
 
   // switch (action.type) {
   //   case 'TOOGLE_MAXIMIZED':
@@ -61,8 +68,11 @@ export const Provider = props => {
 
   const [state, dispatch] = useReducer(reducer, {
     counter: {
-      count:11
-    }
+      count:11,
+    },
+    debug: {
+      isMaximized:true,
+    },
   });
 
   // pass the value in provider and return
