@@ -2,7 +2,7 @@
 
 import React, {useState, useEffect, useContext} from 'react'
 import g from '../../all/global'
-import { GlobalContext } from "../../all/context";
+import { GlobalContext } from "../../all/context"
 
 import api from '../../all/lib/api'
 import Divider from './Divider'
@@ -16,12 +16,11 @@ type Props = {
 
 function AppHeader(props: Props) {
   const thisFunc = 'AppHeader'
-  g.func(thisFile, thisFunc, props);
-  const cn = g.cn(thisFunc);
+  g.func(thisFile, thisFunc, props)
+  const cn = g.cn(thisFunc)
 
-  const globalContext = useContext(GlobalContext);
-  const { state, setState } = globalContext;
-  g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
+  const {state, dispatch} = useContext(GlobalContext)
+
   
 
   return (

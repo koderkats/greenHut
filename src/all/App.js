@@ -32,20 +32,18 @@ function App(props: Props) {
   // const [state, setState] = useState(g.state);
   // g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
 
-
-  const initialState = {count: 0 }
+  const {state, dispatch} = useContext(GlobalContext)
 
   return (<>
-    <style dangerouslySetInnerHTML={{__html: g.styler(AppStyle, null /* state */, thisFunc)}} />
-    {/* <div comp={`${thisFunc}`} className={cn(`app-container`)} style={g.style(props, style, thisFunc)} data-app-page={state.dashboardBridge.activePage} data-dbb-tab={state.dashboardBridge.activeTab}> */}
+    <style dangerouslySetInnerHTML={{__html: g.styler(AppStyle, state, thisFunc)}} />
     <div comp={`${thisFunc}`} className={cn(`app-container`)} style={g.style(props, style, thisFunc)} data-app-page={'default'} data-dbb-tab={'mytasks'}>
     <GlobalContextProvider>
-      <Counter/>
       <Debug/>
       {/* <div comp={`${thisFunc}`} className={cn(`app-container`)} style={g.style(props, style, thisFunc)} data-app-page={state.dashboardBridge.activePage} data-dbb-tab={state.dashboardBridge.activeTab}> */}
       <div comp={`${thisFunc}`} className={cn(`app-container`)} style={g.style(props, style, thisFunc)} data-app-page={'default'} data-dbb-tab={'mytasks'}>
-          {/* <AppHeader/>
+        <AppHeader/>
         <Divider/>
+        {/*
         <DashboardBridge/>
         <DashboardContent>
           {state.dashboardBridge.activeTab === 'tasks' ? <TasksTab/> : ''}
@@ -67,5 +65,25 @@ const style = (props: Props) => ({});
 
 export function AppStyle(state, thisFunc) {
 return `
+body {
+  margin:0;
+  width:100%;
+  height:100%;
+  background:white;
+  color:black;
+  font-family:arial;
+  font-size:16px;
+  overflow:hidden;
+}
+div {
+  box-sizing:border-box;
+  display:inline-block;
+}
+.app-container {
+  display:block;
+  position:absolute;
+  width:100%;
+  min-height:100%;
+}
 `
 }
