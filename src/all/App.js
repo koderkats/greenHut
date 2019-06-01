@@ -43,8 +43,8 @@ function App(props: Props) {
       <div comp={`${thisFunc}`} className={cn(`app-container`)} style={g.style(props, style, thisFunc)} data-app-page={'default'} data-dbb-tab={'mytasks'}>
         <AppHeader/>
         <Divider/>
-        {/*
         <DashboardBridge/>
+        {/*
         <DashboardContent>
           {state.dashboardBridge.activeTab === 'tasks' ? <TasksTab/> : ''}
           {state.dashboardBridge.activeTab === 'convos' ? <div>CONVOS</div> : ''}

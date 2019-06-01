@@ -31,30 +31,28 @@ function DashboardBridge(props: Props) {
 
   // }, []);
 
-  function onTabClick(e) {
-    console.log('TARGET:', e.target);
+  const {state, dispatch} = useContext(GlobalContext)
 
-    // Clear All Tabs
-    const tabs = document.querySelectorAll('.DashboardBridge.tab');
-    if (tabs) {
-      for (let tab of tabs) {
-        tab.setAttribute('data-active', 'false')
-      }
-    }
+  // function onTabClick(e) {
+  //   console.log('TARGET:', e.target);
 
-    // Set Active Tab
-    e.target.setAttribute('data-active', 'true');
-    setState(Object.assign({}, state, {
-      dashboardBridge: {
-        ...state.dashboardBridge,
-        activeTab: e.target.attributes.tab.value,
-      }
-    }));
-  }
+  //   // Clear All Tabs
+  //   const tabs = document.querySelectorAll('.DashboardBridge.tab');
+  //   if (tabs) {
+  //     for (let tab of tabs) {
+  //       tab.setAttribute('data-active', 'false')
+  //     }
+  //   }
 
-  const globalContext = useContext(GlobalContext);
-  const { state, setState } = globalContext;
-  g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
+  //   // Set Active Tab
+  //   e.target.setAttribute('data-active', 'true');
+  //   setState(Object.assign({}, state, {
+  //     dashboardBridge: {
+  //       ...state.dashboardBridge,
+  //       activeTab: e.target.attributes.tab.value,
+  //     }
+  //   }));
+  // }
 
 
   return (<>
@@ -68,10 +66,10 @@ function DashboardBridge(props: Props) {
 
       <div className={cn(`cont tabs`)}>
         <div className={cn(`cont cont-left tabs`)}>
-          <div className={cn(`tab tab-tasks item`)} tab="tasks" data-active={state.dashboardBridge.activeTab === 'tasks'} onClick={(e)=>onTabClick(e)}>Tasks</div>
-          <div className={cn(`tab tab-convos item`)} tab="convos" data-active={state.dashboardBridge.activeTab === 'convos'} onClick={(e)=>onTabClick(e)}>Convos</div>
-          <div className={cn(`tab tab-notes item`)} tab="notes" data-active={state.dashboardBridge.activeTab === 'notes'} onClick={(e)=>onTabClick(e)}>Notes</div>
-          <div className={cn(`tab tab-files item`)} tab="files" data-active={state.dashboardBridge.activeTab === 'files'} onClick={(e)=>onTabClick(e)}>Files</div>
+          <div className={cn(`tab tab-tasks item`)} tab="tasks" data-active={state.dashboard.activeTab === 'tasks'} onClick={()=>dispatch({type:'DASHBOARD_SELECT_TAB', tab:'tasks'})}>Tasks</div>
+          <div className={cn(`tab tab-convos item`)} tab="convos" data-active={state.dashboard.activeTab === 'convos'} onClick={()=>dispatch({type:'DASHBOARD_SELECT_TAB', tab:'convos'})}>Convos</div>
+          <div className={cn(`tab tab-notes item`)} tab="notes" data-active={state.dashboard.activeTab === 'notes'} onClick={()=>dispatch({type:'DASHBOARD_SELECT_TAB', tab:'notes'})}>Notes</div>
+          <div className={cn(`tab tab-files item`)} tab="files" data-active={state.dashboard.activeTab === 'files'} onClick={()=>dispatch({type:'DASHBOARD_SELECT_TAB', tab:'files'})}>Files</div>
         </div>
         <div className={cn(`cont-right`)}>
           <div className={cn(`item`)}>|&nbsp;&nbsp;|</div>

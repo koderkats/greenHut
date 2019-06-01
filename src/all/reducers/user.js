@@ -3,10 +3,10 @@ import g from '../global'
 const user = function(state, action) {
   return g.which(action.type, {
     'USER_ID': Object.assign({}, state, {
-      count: state.id,
+      id: state.id,
     }),
     'USER_ALIAS': Object.assign({}, state, {
-      count: state.alias,
+      alias: state.alias,
     }),
   }, state);
 }
