@@ -95,7 +95,7 @@ function Debug(props: Props) {
 
   return (<>
     <style dangerouslySetInnerHTML={{__html: g.styler(DebugStyle, state, thisFunc)}} />
-    <div comp={thisFunc} className={cn(`debug`)} style={g.style(props, style, thisFunc)} onClick={()=>alert()}>
+    <div comp={thisFunc} className={cn(`debug`)} style={g.style(props, style, thisFunc)} onClick={()=>dispatch({ type:'DEBUG_TOGGLE_MAXIMIZED' })}>
       <div className={cn(`item`)}>{JSON.stringify(state)}</div>
     </div>
   </>);
@@ -113,7 +113,8 @@ export function DebugStyle(state, thisFunc) {
     bottom:0px;
     left:0px;
     width:100%;
-    max-width:${true ? '360' : '40'}px;
+    max-width:${state.debug.isMaximized ? '360' : '40'}px;
+    max-height:${state.debug.isMaximized ? 'unset' : '40'}px;
     height:120px;
     padding:7px 10px 7px 10px;
     color:white;
@@ -122,7 +123,7 @@ export function DebugStyle(state, thisFunc) {
     font-weight:unset;
     text-shadow: 2px 2px black;
     border:1px solid gray;
-    overflow:${true ? 'auto' : 'hidden'};
+    overflow:${state.debug.isMaximized ? 'auto' : 'hidden'};
     z-index:2000000000;
   }
   .item {
