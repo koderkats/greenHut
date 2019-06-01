@@ -33,24 +33,20 @@ function App(props: Props) {
   // g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
 
   const {state, dispatch} = useContext(GlobalContext)
+  g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
+
+
 
   return (<>
     <style dangerouslySetInnerHTML={{__html: g.styler(AppStyle, state, thisFunc)}} />
     <div comp={`${thisFunc}`} className={cn(`app-container`)} style={g.style(props, style, thisFunc)} data-app-page={'default'} data-dbb-tab={'mytasks'}>
     <GlobalContextProvider>
       <Debug/>
-      {/* <div comp={`${thisFunc}`} className={cn(`app-container`)} style={g.style(props, style, thisFunc)} data-app-page={state.dashboardBridge.activePage} data-dbb-tab={state.dashboardBridge.activeTab}> */}
-      <div comp={`${thisFunc}`} className={cn(`app-container`)} style={g.style(props, style, thisFunc)} data-app-page={'default'} data-dbb-tab={'mytasks'}>
+      <div comp={`${thisFunc}`} className={cn(`app-container`)} style={g.style(props, style, thisFunc)} data-app-page={'default'} data-dbb-tab={'tasks'}>
         <AppHeader/>
         <Divider/>
         <DashboardBridge/>
-        {/*
-        <DashboardContent>
-          {state.dashboardBridge.activeTab === 'tasks' ? <TasksTab/> : ''}
-          {state.dashboardBridge.activeTab === 'convos' ? <div>CONVOS</div> : ''}
-          {state.dashboardBridge.activeTab === 'notes' ? <div>NOTES</div> : ''}
-          {state.dashboardBridge.activeTab === 'files' ? <div>FILES</div> : ''}
-        </DashboardContent> */}
+        <DashboardContent/>
       </div>
 
     </GlobalContextProvider>
@@ -58,6 +54,7 @@ function App(props: Props) {
     </div>
 </>)
 }
+
 
 export default hot(module)(App)
 

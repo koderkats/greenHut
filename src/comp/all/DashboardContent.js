@@ -6,6 +6,7 @@ import { GlobalContext } from "../../all/context";
 
 import api from '../../all/lib/api'
 import Divider from './Divider'
+import TasksTab from '../tabs/TasksTab'
 
 const thisFile = 'DashboardContent.js'
 
@@ -31,14 +32,15 @@ function DashboardContent(props: Props) {
   //   }));
   // }, [state.app.widthHeight]);
 
-  const globalContext = useContext(GlobalContext);
-  const { state } = globalContext;
-  g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
+  const {state, dispatch} = useContext(GlobalContext)
 
   return (<>
     <style dangerouslySetInnerHTML={{__html: g.styler(DashboardContentStyle, state, thisFunc)}} />
     <div comp={thisFunc} className={cn(`dashboardContent`)} alias={props.alias} style={g.style(props, style, thisFunc)}>
-      {props.children}
+      {state.dashboard.activeTab === 'tasks' ? <TasksTab/> : ''}
+      {state.dashboard.activeTab === 'convos' ? <div>CONVOS</div> : ''}
+      {state.dashboard.activeTab === 'notes' ? <div>NOTES</div> : ''}
+      {state.dashboard.activeTab === 'files' ? <div>FILES</div> : ''}
     </div>
   </>);
 
