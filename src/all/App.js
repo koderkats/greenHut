@@ -33,10 +33,11 @@ function App(props: Props) {
   // g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
 
   const {state, dispatch} = useContext(GlobalContext)
-  g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
+  // g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT');
 
 
 
+  
   return (<>
     <style dangerouslySetInnerHTML={{__html: g.styler(AppStyle, state, thisFunc)}} />
     <div comp={`${thisFunc}`} className={cn(`app-container`)} style={g.style(props, style, thisFunc)} data-app-page={'default'} data-dbb-tab={'mytasks'}>

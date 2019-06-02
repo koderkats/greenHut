@@ -12,12 +12,8 @@ export default {
 		width:0, height:0, widthHeigh:'',
 	},
 
-	appHeader: {
-		height:0,
-	},
-
 	dashboard: {
-		bridgeHeight:0, activeTab:'tasks',
+		activeTab:'tasks',
 	},
 
 	page: {
@@ -28,8 +24,12 @@ export default {
 		id:4, alias:'user', email:'user@u.com',
 	},
 
-	dashboardContent: {
-		height:0,
+	components: {
+		windowWidth: 0,
+		windowHeight: 0,
+		dashboardContentHeight:0,
+		dashbardBridgeHeight:0,
+		appHeaderHeight:0,	
 	},
 
 }

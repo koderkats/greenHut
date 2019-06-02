@@ -63,6 +63,21 @@ function Debug(props: Props) {
 
   const {state, dispatch} = useContext(GlobalContext)
 
+  useEffect(()=>{
+    g.func(thisFile, thisFunc + ':useEffect [SET_INITIAL_STATE]');
+    g.dir(thisFile, thisFunc, state, 'USEEFFECT STATE')
+    window.addEventListener('resize', () => {
+      // g.dir(thisFile, thisFunc, state, 'GLOBAL CONTEXT, [ON_RESIZE]');
+      dispatch({ type:'WINDOW_RESIZE' })
+      // dispatch({type:'WINDOW_RESIZE'})
+      g.log(thisFile, thisFunc, `WINDOW ${window.innerWidth}x${window.innerHeight}`);
+    });
+    dispatch({ type:'WINDOW_RESIZE' })
+
+  },[]);
+
+
+
   return (<>
     <style dangerouslySetInnerHTML={{__html: g.styler(DebugStyle, state, thisFunc)}} />
     <div comp={thisFunc} className={cn(`debug`)} style={g.style(props, style, thisFunc)} onClick={()=>dispatch({ type:'DEBUG_TOGGLE_MAXIMIZED' })}>

@@ -103,7 +103,7 @@ export function TasksTabStyle(state, thisFunc) {
   const itemMargin = '5px'
   return `
   .comp {
-    height:${state.dashboard.height - 100}px;
+    height:${state.components.dashboardContentHeight - 100}px;
     background:${bg};
     overflow:auto;
     width:360px;
