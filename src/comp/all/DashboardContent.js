@@ -34,6 +34,7 @@ function DashboardContent(props: Props) {
 
   const {state, dispatch} = useContext(GlobalContext)
 
+
   return (<>
     <style dangerouslySetInnerHTML={{__html: g.styler(DashboardContentStyle, state, thisFunc)}} />
     <div comp={thisFunc} className={cn(`dashboardContent`)} alias={props.alias} style={g.style(props, style, thisFunc)}>

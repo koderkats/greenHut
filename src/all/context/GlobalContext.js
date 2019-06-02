@@ -9,7 +9,7 @@ export const reducer = combineReducers(reducers)
 
 export const Provider = props => {
   const [state, dispatch] = useReducer(reducer, initialState);
-  return <Context.Provider value={{ state, dispatch }}>{props.children}</Context.Provider>;
+  return <Context.Provider value={{ state: Object.assign(state, {dispatch}), dispatch }}>{props.children}</Context.Provider>;
 };
 
 export const { Consumer } = Context;
