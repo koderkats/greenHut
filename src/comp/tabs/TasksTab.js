@@ -62,6 +62,7 @@ function TasksTab(props: Props) {
   const {state, dispatch} = useContext(GlobalContext)
 
   return (<>
+  <button className={cn(`new-task-list`)} onClick={()=>{dispatch({type:'TASKLIST_NEW'})}}>+ New TaskList</button>
   <TaskListCont>
     <Head/>
     <style dangerouslySetInnerHTML={{__html: g.styler(TasksTabStyle, state, thisFunc)}} />
@@ -128,6 +129,12 @@ export function TasksTabStyle(state, thisFunc) {
     width:360px;
     direction:ltr;
     box-sizing:border-box;
+  }
+  .new-task-list {
+    margin:10px;
+    padding:5px;
+    padding-left:10px;
+    padding-right:10px;
   }
   `
 }
